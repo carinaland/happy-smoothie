@@ -1,0 +1,37 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  </head>
+  
+  <div class="container">
+  <div class='panel panel-primary'>
+    <div class="panel-body">
+      <div >
+          
+        <div class="col-xs-8">
+            <p>Search:</p>
+            <div class="input-group add-on">
+                <input  [(ngModel)]="listFilter" 
+                class="form-control" placeholder="e.g. fruity, bitter.." name="srch-term" id="srch-term" type="text">
+              </div>
+        </div>
+      </div>
+
+      
+
+      <div class="col-xs-12 blogShort" *ngFor="let smoothie of filteredSmoothies">
+        <h1>{{smoothie.name}} - {{smoothie.price | currency: "EUR" :true:"1.2-2"}}</h1>
+        <img [src]="smoothie.imageUrl" [title]="smoothie.name" [style.width.px]="imageWidth" 
+        [style.height.px]="imageHeight" [style.margin.px]="imageMargin"
+          class="pull-left img-responsive thumb margin10 img-thumbnail">
+        <article>
+          <p>
+            {{smoothie.description}}
+          </p>
+        </article>
+        <app-star-rating [rating]="smoothie.rating"></app-star-rating>
+        <a class="btn btn-blog pull-right " href="#">READ MORE</a>
+        <a class="marginBottom10"></a>
+      </div>
+    </div>
+  </div>
+</div>

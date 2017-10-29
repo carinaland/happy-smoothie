@@ -1,0 +1,76 @@
+.container{
+    width:66%;
+}
+
+.blogShort{ border-bottom:1px solid #FF8A8A;
+}
+.add{background: #333; padding: 10%; height: 300px;}
+
+.nav-sidebar { 
+    width: 100%;
+    padding: 8px 0; 
+    border-right: 1px solid #FFA2A2;
+}
+.nav-sidebar a {
+    color: #333;
+    -webkit-transition: all 0.08s linear;
+    -moz-transition: all 0.08s linear;
+    -o-transition: all 0.08s linear;
+    transition: all 0.08s linear;
+}
+.nav-sidebar .active a { 
+    cursor: default;
+    background-color: #34ca78; 
+    color: #fff; 
+}
+.nav-sidebar .active a:hover {
+    background-color: #37D980;   
+}
+.nav-sidebar .text-overflow a,
+.nav-sidebar .text-overflow .media-body {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; 
+}
+
+.btn-blog {
+    color: #ffffff;
+    background-color:#FF9100;
+    border-color: #D37C03;
+    border-radius:0;
+    margin-bottom:15px
+}
+.btn-blog:hover,
+.btn-blog:focus,
+.btn-blog:active,
+.btn-blog.active,
+.open .dropdown-toggle.btn-blog {
+    color: white;
+    background-color: #FFBB00;
+    border-color: #CCCF06;
+}
+
+  /* stop the glowing blue shadow */
+  .add-on .form-control:focus {
+   box-shadow:none;
+   -webkit-box-shadow:none; 
+   border-color:#FFA0A0; 
+  }
+  .form-control{width:20%}
+  .navbar-nav > li > a {
+    border-right: 1px solid #ddd;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  .navbar-nav:last-child{ border-right:0}
+
+  @media only screen and (max-width: 564px) {
+    h1{font-size: 22px;
+    }
+
+}
+@media only screen and (max-width: 764px) {
+
+    .container{width:99%;}
+}
