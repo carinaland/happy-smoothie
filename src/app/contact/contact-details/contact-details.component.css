@@ -1,0 +1,14 @@
+#contact li{
+    font-size: 2rem;
+    text-decoration: none;
+}
+#contact ul {
+  list-style-type: none;
+}
+
+#contact img{
+	float: left;
+	margin-right: 2rem;
+    margin-top: 1rem;
+	width: 4rem;
+}
