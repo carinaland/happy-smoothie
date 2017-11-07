@@ -6,18 +6,19 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { SmoothiesComponent } from './smoothies/smoothies.component';
 import { SmoothieListComponent } from './smoothie-list/smoothie-list.component';
+import { SmoothieDetailsComponent } from './smoothie-details/smoothie-details.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { ContactComponent } from './contact/contact.component';
-import { ContactDetailsComponent } from './contact-details/contact-details.component';
-import { MapComponent } from './map/map.component';
+ import { ContactDetailsComponent } from './contact/contact-details/contact-details.component';
+ import { MapComponent } from './contact/map/map.component';
 import {RouterModule} from "@angular/router";
 
 import { AgmCoreModule } from '@agm/core';
-import { ShopComponent } from './shop/shop.component';
+//import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
-import { CartDetailsComponent } from './cart-details/cart-details.component';
-import { PersonalDetailsComponent } from './personal-details/personal-details.component';
-import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
+import { PersonalDetailsComponent } from './cart/personal-details/personal-details.component';
+import { PaymentDetailsComponent } from './cart/payment-details/payment-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
     ContactComponent,
     ContactDetailsComponent,
     MapComponent,
-    ShopComponent,
+    SmoothieDetailsComponent,
+    //ShopComponent,
     CartComponent,
     CartDetailsComponent,
     PersonalDetailsComponent,
@@ -40,9 +42,10 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
     HttpModule,
     RouterModule.forRoot([
       {path: 'smoothies', component: SmoothiesComponent},
-      {path: 'shop', component: ShopComponent},
+      {path: 'smoothies/details/:id', component: SmoothieDetailsComponent},
+      //{path: 'shop', component: ShopComponent},
       {path: 'contact', component: ContactComponent},
-      {path: 'admin'}, component:admin}
+      //{path: 'admin', component:admin}
     ]),
     AgmCoreModule.forRoot({
       apiKey: ''
