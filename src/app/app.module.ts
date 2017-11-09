@@ -5,8 +5,8 @@ import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SmoothiesComponent } from './smoothies/smoothies.component';
-import { SmoothieListComponent } from './smoothie-list/smoothie-list.component';
-import { SmoothieDetailsComponent } from './smoothie-details/smoothie-details.component';
+import { SmoothieListComponent } from './smoothies/smoothie-list/smoothie-list.component';
+import { SmoothieDetailsComponent } from './smoothies/smoothie-details/smoothie-details.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { ContactComponent } from './contact/contact.component';
  import { ContactDetailsComponent } from './contact/contact-details/contact-details.component';

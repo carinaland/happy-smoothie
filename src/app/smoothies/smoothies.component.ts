@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ISmoothie } from './smoothie-list/smoothies';
 
 @Component({
   selector: 'app-smoothies',

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ISmoothie } from 'app/smoothie-list/smoothies';
+import { ISmoothie } from './smoothies';
 
 @Component({
   selector: 'app-smoothie-list',
-  templateUrl: './smoothie-list.component.html',
-  styleUrls: ['./smoothie-list.component.css']
+  templateUrl: 'smoothie-list.component.html',
+  styleUrls: ['smoothie-list.component.css']
 })
 export class SmoothieListComponent {
 imageWidth: number = 85;
