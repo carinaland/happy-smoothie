@@ -1,3 +1,33 @@
-<p>
-  personal-details works!
-</p>
+<form name="myForm"  *ngFor="let u of user" novalidate> 
+  <label for="firstName">Name:</label>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="form-control" name="name" value={{u.name}} id="firstName" #name required />
+    </div>
+  </div>
+  <label for="address1" class="control-label">Address: </label>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="form-control" name="address" value={{u.address}} #address/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="city" class="control-label">City: </label>
+      <input type="text" class="form-control" name="city" value={{u.city}} #city/>
+    </div>
+    <div class="col-md-2">
+      <label for="county" class="control-label">County: </label>
+      <input type="text" class="form-control" name="county"  value={{u.county}} #county/>
+    </div>
+    <div class="col-md-4">
+      <label for="eircode" class="control-label">Eircode: </label>
+      <input type="text" class="form-control" name="eircode" value={{u.eircode}}  #eircode/>
+    </div>
+  </div>
+  <div  class="row text-right">
+    <div class="col-sm-12">
+      <button type="subbmit" class="btn btn-success btn-sm" (click)="updateUser()">Edit</button>
+    </div>
+  </div>
+</form>

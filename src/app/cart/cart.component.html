@@ -1,15 +1,38 @@
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-       <app-cart-details></app-cart-details>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-          <div class="text-center">
-            <button class="btn btn-info" routerLink="/">Continue Shopping</button>
-            <button class="btn btn-success" routerLink="/">Checkout</button>
-          </div>
+  <div class='panel panel-primary'>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <app-cart-details></app-cart-details>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-right" id="checkContinueBtn">
+        <button class="btn btn-info" routerLink="/">Continue Shopping</button>
+        <button class="btn btn-success" (click)="showAddress()" *ngIf="!showAdd">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showAdd" class='panel panel-primary'>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <app-personal-details></app-personal-details>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showAdd" class='panel panel-primary'>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <app-payment-details></app-payment-details>
+        </div>
+      </div>
+      <button type="subbmit" class="btn btn-success btn-sm" (click)="addOrder()">Pay</button>
+    </div>
+  </div>
 </div>

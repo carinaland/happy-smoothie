@@ -14,11 +14,12 @@ import { ContactComponent } from './contact/contact.component';
 import {RouterModule} from "@angular/router";
 
 import { AgmCoreModule } from '@agm/core';
-//import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
 import { PersonalDetailsComponent } from './cart/personal-details/personal-details.component';
 import { PaymentDetailsComponent } from './cart/payment-details/payment-details.component';
+import { UserService } from 'app/user.service';
+import { OrderService } from 'app/order.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,6 @@ import { PaymentDetailsComponent } from './cart/payment-details/payment-details.
     ContactDetailsComponent,
     MapComponent,
     SmoothieDetailsComponent,
-    //ShopComponent,
     CartComponent,
     CartDetailsComponent,
     PersonalDetailsComponent,
@@ -43,7 +43,7 @@ import { PaymentDetailsComponent } from './cart/payment-details/payment-details.
     RouterModule.forRoot([
       {path: 'smoothies', component: SmoothiesComponent},
       {path: 'smoothies/details/:id', component: SmoothieDetailsComponent},
-      //{path: 'shop', component: ShopComponent},
+      {path: 'shop', component: CartComponent},
       {path: 'contact', component: ContactComponent},
       //{path: 'admin', component:admin}
     ]),
@@ -51,7 +51,7 @@ import { PaymentDetailsComponent } from './cart/payment-details/payment-details.
       apiKey: ''
     })
   ],
-  providers: [],
+  providers: [OrderService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
