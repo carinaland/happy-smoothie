@@ -17,14 +17,17 @@ import {DetailsService} from './details.service';
 import {CommentService} from './smoothies/smoothie-details/comments/comment.service';
 
 import { AgmCoreModule } from '@agm/core';
-//import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
 import { PersonalDetailsComponent } from './cart/personal-details/personal-details.component';
 import { PaymentDetailsComponent } from './cart/payment-details/payment-details.component';
+
 import { CommentsComponent } from './smoothies/smoothie-details/comments/comments.component';
 import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
 import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-comment/add-comment.component';
+
+import { UserService } from 'app/user.service';
+import { OrderService } from 'app/order.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,6 @@ import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-c
     ContactDetailsComponent,
     MapComponent,
     SmoothieDetailsComponent,
-    //ShopComponent,
     CartComponent,
     CartDetailsComponent,
     PersonalDetailsComponent,
@@ -52,7 +54,7 @@ import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-c
     RouterModule.forRoot([
       {path: 'smoothies', component: SmoothiesComponent},
       {path: 'smoothies/details/:id', component: SmoothieDetailsComponent},
-      //{path: 'shop', component: ShopComponent},
+      {path: 'shop', component: CartComponent},
       {path: 'contact', component: ContactComponent},
       //{path: 'admin', component:admin}
     ]),
@@ -60,7 +62,7 @@ import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-c
       apiKey: ''
     })
   ],
-  providers: [DetailsService, CommentService],
+  providers: [OrderService, UserService, DetailsService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

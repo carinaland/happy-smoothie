@@ -12,3 +12,14 @@
     margin-top: 1rem;
 	width: 4rem;
 }
+
+a:link {
+    text-decoration: none;
+}
+li {
+    padding-bottom: 1rem;
+}
+
+.fa {
+    padding-right: 1rem;
+}

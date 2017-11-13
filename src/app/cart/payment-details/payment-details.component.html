@@ -1,3 +1,33 @@
-<p>
-  payment-details works!
-</p>
+<div class='row'>
+  <div class="col-xs-12">
+    <h4>Please enter your payment information below</h4>
+  </div>
+  <form accept-charset="UTF-8" action="/"  id="payment-form" method="post">
+    <div class="row">
+      <div class="col-xs-12">
+        <label>Name on Card</label>
+        <input class='form-control' size='4' type='text'>
+      </div>
+    </div>
+    <div class="row">
+        <div class='col-xs-12'>
+            <label>Card Number</label>
+            <input autocomplete='off' class='form-control' size='20' type='text'>
+          </div>
+        </div>
+        <div class="row">
+      <div class="col-md-4">
+        <label>CVC</label>
+        <input autocomplete='off' class='form-control' placeholder='ex. 123' size='4' type='text'>
+      </div>
+      <div class='col-md-4'>
+        <label>Expiration</label>
+        <input class='form-control' placeholder='MM' size='2' type='text'>
+      </div>
+      <div class="col-md-4">
+        <label> </label>
+        <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+      </div>
+    </div>
+  </form>
+  </div>
