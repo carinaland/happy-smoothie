@@ -13,12 +13,18 @@ import { ContactComponent } from './contact/contact.component';
  import { MapComponent } from './contact/map/map.component';
 import {RouterModule} from "@angular/router";
 
+import {DetailsService} from './details.service';
+import {CommentService} from './smoothies/smoothie-details/comments/comment.service';
+
 import { AgmCoreModule } from '@agm/core';
 //import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
 import { PersonalDetailsComponent } from './cart/personal-details/personal-details.component';
 import { PaymentDetailsComponent } from './cart/payment-details/payment-details.component';
+import { CommentsComponent } from './smoothies/smoothie-details/comments/comments.component';
+import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
+import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { PaymentDetailsComponent } from './cart/payment-details/payment-details.
     CartComponent,
     CartDetailsComponent,
     PersonalDetailsComponent,
-    PaymentDetailsComponent
+    PaymentDetailsComponent,
+    CommentsComponent,
+    CommentComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,7 @@ import { PaymentDetailsComponent } from './cart/payment-details/payment-details.
       apiKey: ''
     })
   ],
-  providers: [],
+  providers: [DetailsService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
