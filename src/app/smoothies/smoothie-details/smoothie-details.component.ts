@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DetailsService } from "../../details.service";
 
 @Component({
   selector: 'app-smoothie-details',
@@ -8,17 +7,9 @@ import { DetailsService } from "../../details.service";
 })
 export class SmoothieDetailsComponent implements OnInit {
 
-  product: any [];
-
-  constructor(private detailsService: DetailsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.detailsService.getSmoothie(2).subscribe(product => {
-      this.product = product[0];
-      console.log(this.product);
-    });
   }
-
-
 
 }

@@ -11,23 +11,16 @@ import { StarRatingComponent } from './shared/star-rating/star-rating.component'
 import { ContactComponent } from './contact/contact.component';
  import { ContactDetailsComponent } from './contact/contact-details/contact-details.component';
  import { MapComponent } from './contact/map/map.component';
-import {RouterModule} from "@angular/router";
 
-import {DetailsService} from './details.service';
-import {CommentService} from './smoothies/smoothie-details/comments/comment.service';
 
 import { AgmCoreModule } from '@agm/core';
+//import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
 import { PersonalDetailsComponent } from './cart/personal-details/personal-details.component';
 import { PaymentDetailsComponent } from './cart/payment-details/payment-details.component';
-
-import { CommentsComponent } from './smoothies/smoothie-details/comments/comments.component';
-import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
-import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-comment/add-comment.component';
-
-import { UserService } from 'app/user.service';
-import { OrderService } from 'app/order.service';
+import { HomeComponent } from './home/home.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -39,22 +32,25 @@ import { OrderService } from 'app/order.service';
     ContactDetailsComponent,
     MapComponent,
     SmoothieDetailsComponent,
+    //ShopComponent,
     CartComponent,
     CartDetailsComponent,
     PersonalDetailsComponent,
     PaymentDetailsComponent,
-    CommentsComponent,
-    CommentComponent,
-    AddCommentComponent
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+      //{path: '', redirectTo: 'Home'},
+      {path: 'home', component: HomeComponent},
       {path: 'smoothies', component: SmoothiesComponent},
+      {path: './app/smoothies', component: SmoothiesComponent},
       {path: 'smoothies/details/:id', component: SmoothieDetailsComponent},
-      {path: 'shop', component: CartComponent},
+      //{path: 'shop', component: ShopComponent},
       {path: 'contact', component: ContactComponent},
       //{path: 'admin', component:admin}
     ]),
@@ -62,7 +58,7 @@ import { OrderService } from 'app/order.service';
       apiKey: ''
     })
   ],
-  providers: [OrderService, UserService, DetailsService, CommentService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

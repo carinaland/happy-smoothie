@@ -1,21 +1,78 @@
-<!--The whole content below can be removed with the new code.-->
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 
 <div style="text-align:center">
-    <img id="bannerLogo" src="https://i.imgur.com/zCOGRwK.png" title="logo" />
-  </div>
+    <a class="active item" [routerLink]="['home']">
+      <img id="bannerLogo" src="https://i.imgur.com/zCOGRwK.png" title="logo" />
+      </a>
+</div>
 <!--<app-smoothies></app-smoothies>
 <app-contact></app-contact> -->
 
 
-<div cllass="container">
-  <div class="ui large black  three item inverted  menu">
-    <a class="active item" [routerLink]="['smoothies']"> Smoothies</a>
-    <a class="active item" [routerLink]="['shop']"> Shop</a>
-    <a class="active item" [routerLink]="['contact']">Contact Us</a>
-    <a class="active item" [routerLink]="['admin']">Admin</a>
-  </div> 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <!--<img id="bannerLogo" class="navbar-brand" src="https://i.imgur.com/zCOGRwK.png" title="logo"/>-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-  <router-outlet></router-outlet>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="width-adjust">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a class="active item" [routerLink]="['home']"> Home</a></li>
+          <li><a class="active item" [routerLink]="['smoothies']"> Smoothies</a></li>
+          <li><a class="active item" [routerLink]="['shop']"> Shop</a></li>
+          <li><a class="active item" [routerLink]="['contact']">Contact Us</a></li>
+
+        </ul>
+
+        <!--<form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>-->
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="active item" [routerLink]="['admin']">Admin</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer> 
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a  [routerLink]="['admin']">Admin</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a  [routerLink]="['home']"> Home</a></li>
+        <li><a  [routerLink]="['smoothies']"> Smoothies</a></li>
+        <li><a  [routerLink]="['shop']"> Shop</a></li>
+        <li><a  [routerLink]="['contact']">Contact Us</a></li>
+  
+      </ul>
+      <div class="container adjust-footer">Copyright &copy; <strong>HappySmoothies Inc.</strong> 2017</div>
+  </footer>
+ 
+
