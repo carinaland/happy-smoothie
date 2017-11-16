@@ -23,6 +23,7 @@ export class PersonalDetailsComponent implements OnInit {
   loadPersonalDetails() : void {
     this.userService.getUser(2).subscribe((returnedUser) =>{
       this.user = returnedUser; 
+
       })
   }
 

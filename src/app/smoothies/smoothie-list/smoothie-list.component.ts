@@ -7,8 +7,8 @@ import { ISmoothie } from './smoothies';
   styleUrls: ['smoothie-list.component.css']
 })
 export class SmoothieListComponent {
-imageWidth: number = 85;
-imageHeight: number = 85;
+imageWidth: number = 125;
+imageHeight: number = 125;
 imageMargin: number = 2;
 
 _listFilter: string ;

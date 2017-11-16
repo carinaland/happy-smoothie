@@ -1,0 +1,52 @@
+.container{
+    line-height: 36px;
+
+}
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff1e40;
+}
+img{
+    width:99%;
+}
+
+.home-map-text{
+    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.re-adjust-right{
+    float: right;
+}
+
+
+.re-adjust-left{
+    float: left;
+}
+.row{
+    margin-top: 50px;
+ }
+  
+ .bottom {
+    border-bottom: 1px solid #ccc;
+    margin-top: 120px;
+}
+.multiple-borders {
+    box-shadow: 0px 0px 0px 5px #fff,  0px 0px 5px 6px #b7b7b7;
+}
+@media only screen and (max-width: 1056px) {
+    .home-map-text{
+
+        margin-left: 50px;
+    }
+}
+@media only screen and (max-width: 990px) {
+    .re-adjust-right{
+        padding-left: 30px;
+    }
+}
+@media only screen and (max-width: 664px) {
+    .home-map-text{
+        margin-left: 10px;
+    }
+}
