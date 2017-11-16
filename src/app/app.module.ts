@@ -28,6 +28,8 @@ import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-c
 
 import { UserService } from 'app/user.service';
 import { OrderService } from 'app/order.service';
+import { DescriptionSectionComponent } from './smoothies/smoothie-details/description-section/description-section.component';
+import { AddToBasketComponent } from './smoothies/smoothie-details/description-section/add-to-basket/add-to-basket.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { OrderService } from 'app/order.service';
     PaymentDetailsComponent,
     CommentsComponent,
     CommentComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    DescriptionSectionComponent,
+    AddToBasketComponent
   ],
   imports: [
     BrowserModule,
