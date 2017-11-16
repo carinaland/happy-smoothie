@@ -27,7 +27,7 @@ export class CartDetailsComponent implements OnInit {
   cart: ICart[];
  
   loadCart(): void {
-    this.cartService.getCart("1, 3").subscribe((returnedCart) => {
+    this.cartService.getCart("1, 2").subscribe((returnedCart) => {
       this.cart = returnedCart;
     })
   }

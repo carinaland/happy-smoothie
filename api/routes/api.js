@@ -18,8 +18,8 @@ router.get('/Smoothie/:id', function(req, res, next) {
     });
 });
 
-router.get('/Smoothie/:id', function(req, res, next) {
-    Smoothie.getSmoothieByIdToCart(req.params.id, function(err, rows) {
+router.get('/Cart/:id', function(req, res, next) {
+    Smoothie.getSmoothieForCart(req.params.id, function(err, rows) {
          if (err) {
             res.json(err);
          } else {
@@ -27,6 +27,8 @@ router.get('/Smoothie/:id', function(req, res, next) {
          }
     });
 });
+
+
 
 router.get('/Smoothies', function(req, res, next) {
     Smoothie.getAllSmoothies(function(err, rows) {
