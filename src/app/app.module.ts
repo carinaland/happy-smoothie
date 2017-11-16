@@ -30,6 +30,7 @@ import { UserService } from 'app/user.service';
 import { OrderService } from 'app/order.service';
 import { DescriptionSectionComponent } from './smoothies/smoothie-details/description-section/description-section.component';
 import { AddToBasketComponent } from './smoothies/smoothie-details/description-section/add-to-basket/add-to-basket.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { AddToBasketComponent } from './smoothies/smoothie-details/description-s
       apiKey: ''
     })
   ],
-  providers: [OrderService, UserService, DetailsService, CommentService],
+  providers: [OrderService, UserService, DetailsService, CommentService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

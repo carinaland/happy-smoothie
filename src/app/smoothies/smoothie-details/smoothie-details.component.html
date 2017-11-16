@@ -3,9 +3,8 @@
 </head>
 <div class="container">
     <h2>Smoothie-Details</h2>
-    <app-description-section></app-description-section>
-    <!-- todo add details box -->
-    details
+    <app-description-section [smoothie]="product"></app-description-section>
+    {{product.productId}}
     <br/>
     <app-comments></app-comments>
 </div>
