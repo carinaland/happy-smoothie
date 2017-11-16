@@ -9,5 +9,6 @@ var Order = {
     getAllOrders: function(callback) {
         return db.query("Select * from smoothies.order", callback);
     },
+
 };
 module.exports = Order;

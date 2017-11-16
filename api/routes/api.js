@@ -18,6 +18,16 @@ router.get('/Smoothie/:id', function(req, res, next) {
     });
 });
 
+router.get('/Smoothie/:id', function(req, res, next) {
+    Smoothie.getSmoothieByIdToCart(req.params.id, function(err, rows) {
+         if (err) {
+            res.json(err);
+         } else {
+            res.json(rows);
+         }
+    });
+});
+
 router.get('/Smoothies', function(req, res, next) {
     Smoothie.getAllSmoothies(function(err, rows) {
         if (err) {
@@ -107,10 +117,14 @@ router.post('/Comment/add', function(req, res, next) {
 
 //Order
 router.post('/Order', function(req, res, next) {
-    console.log(req.params);
-
-
-    Order.addOrder(req.params.id, function(err, rows) {
+    console.log(req.body);
+    console.log(Date.now);
+    var order = {
+        'idOrder': req.body.idOrder,
+        'idUser': req.body.idUser,
+        'date': Date.now
+    }
+    Order.addOrder(order, function(err, rows) {
         if (err) {
            res.json(err);
         } else {
@@ -118,6 +132,7 @@ router.post('/Order', function(req, res, next) {
         }
    });
 });
+
 
 
 router.get('/Order', function(req, res, next) {

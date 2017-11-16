@@ -10,26 +10,25 @@
     </tr>
   </thead>
   <tbody>
-    <!--  <tr ngIf="cart.length == 0"> -->
-    <tr>
-      <td>Your cart is empty</td>
+     <tr  colspan="12" *ngIf="cart.length == 0">    
+      <td class="text-center">Your cart is empty</td>
     </tr>
-  <!--   <tr ngFor="let line of cart.line"> -->
-    <tr>
-      <td>Image</td>
-      <td>Product</td>
-      <th><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
-        <input type="text" readonly>
-        <button class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-minus"></span></button>
-      </th>
-      <td>Price</td>
-      <td>Subtotal</td>
-      <td><button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+  <tr>
+    <tr *ngFor="let c of cart; let i = index">
+      <td><img [src]='c.image' [title]='c.name' [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'></td>
+      <td>{{c.name}}</td>
+      <td><button class="btn btn-success btn-sm" (click)="incrementQuantity(i)"><span class="glyphicon glyphicon-plus"></span></button>
+      {{c.quantity}}
+        <button class="btn btn-warning btn-sm" (click)="decrementQuantity(i)"><span class="glyphicon glyphicon-minus"></span></button>
+      </td>
+      <td>{{c.price | currency: "EUR" :true:"1.2-2"}}</td>
+      <td>{{c.quantity * c.price | currency: "EUR" :true:"1.2-2"}}</td>
+      <td><button class="btn btn-sm btn-danger" (click)="removeProduct(i)"><span class="glyphicon glyphicon-trash"></span></button></td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="4" class="text-right">Total:</td>
+      <td colspan="4" class="text-right">Total:{{totalCost}}</td>
     </tr>
   </tfoot>
 </table>
