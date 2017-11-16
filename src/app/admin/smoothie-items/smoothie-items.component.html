@@ -1,0 +1,61 @@
+<p>smooothie items</p>
+
+
+<div class="container">
+  <hr>
+  <button (click)="showAddForm()" *ngIf="!showAdd" type="button" class="btn btn-info btn-lg pull-right">Add Smoothie</button>
+
+  <h3>List of all Smoothies</h3>
+  <span class="clearfix"></span>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Ingredients</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sInfo of Data">
+        <td #image>{{sInfo.imageUrl}}</td>
+        <td #name>{{sInfo.name }}</td>
+        <td #price>{{sInfo.price}}</td>
+        <td #ingredients>{{sInfo.price}}</td>
+        <td #description>{{sInfo.description}}</td>
+        <td><button (click)="edit=!edit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+          <button id="delbtn" (click)="RemoveSmoothie(i)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="edit">
+    <div class="ui input focus">
+      <input type="text" size="7" #editimage value="{{sInfo.name}}">
+      <input type="text" size="7" #editname value="{{sInfo.name}">
+      <input type="text" size="7" #editPrice value=" {{sInfo.price}}">
+      <input type="text" size="7" #editIngre value="{{sInfo.price}} ">
+      <input type="text" size="7" #editDes value=" {{sInfo.description}} ">
+    </div>
+    <div class="ui buttons right floated">
+      <button (click)="save(editimage.value,editname.value, editprice.value,editIngre.value, edit.Des.value)" type="button" class="btn btn-sm btn-info">
+    <span class="glyphicon glyphicon-ok-sign"></span> Save
+  </button>
+      <div class="or"></div>
+      <button (click)="Close()" class="btn btn-sm btn-warning">Close</button>
+    </div>
+  </div>
+</div>
+<div></div>
+<hr>
+<div *ngIf="showAdd" class='panel panel-primary'>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <app-add-smoothie></app-add-smoothie>
+      </div>
+    </div>
+  </div>
+</div>

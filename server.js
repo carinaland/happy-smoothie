@@ -1,10 +1,18 @@
-var express = require('express'),
-    app = express(),
-    port = process.env.PORT || 3100;
+var express = require('express');
+var cors = require('cors');
+var app = express();
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+port = process.env.PORT || 3100;
+
+app.use(cors());
 
 var path = require('path');
 const api = require('./api/routes/api');
 const ctrl = require('./api/routes/routes');
+
 
 app.use(express.static(path.join(__dirname, 'dist')));
 

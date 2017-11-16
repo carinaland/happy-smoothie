@@ -26,3 +26,23 @@ router.get('/Smoothies', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+router.post('/Smoothies/add', function(req, res, next) {
+    console.log(req.body);
+    console.log(Date.now);
+    var smoothie = {
+        'idSmoothie': req.body.idSmoothie,
+        'name': req.body.name,
+        'price': req.body.price,
+        'imageUrl': req.body.imageUrl,
+        'description': req.body.imageUrl,
+    }
+    Comment.addSmoothie(smoothie, function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
