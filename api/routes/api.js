@@ -76,6 +76,7 @@ router.get('/Comments', function(req, res, next) {
 
 
 router.get('/Smoothie/:id/Comments', function(req, res, next) {
+    console.log('work');
     Comment.getCommentsOfSmoothie(req.params.id, function(err, rows) {
         if (err) {
             res.json(err);
