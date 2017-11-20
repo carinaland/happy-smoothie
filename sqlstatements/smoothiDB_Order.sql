@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `Order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Order` (
-  `idOrder` int(11) NOT NULL,
+  `idOrder` int(11) NOT NULL AUTO_INCREMENT,
   `idUser` int(11) NOT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`idOrder`)

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ISmoothie } from 'app/smoothies/smoothie-list/smoothies';
-import { Http, RequestMethod, Headers}  from "@angular/http";
+import { Http, RequestMethod, Headers } from "@angular/http";
 import { OrderService } from 'app/order.service';
 
 @Component({
@@ -10,23 +10,29 @@ import { OrderService } from 'app/order.service';
 })
 export class CartComponent implements OnInit {
   smoothies: ISmoothie[];
-  showAdd:boolean = false;
-  constructor(private orderService : OrderService) { }
+  showAdd: boolean = false;
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
 
   }
 
-  showAddress(){ 
+  showAddress() {
     this.showAdd = true;
   }
 
 
-  addOrder(): void {
+  addOrder(){
     console.log("ok");
-   var Order = {idOrder:"13", idUser:"1"};
-   console.log(Order);
-    this.orderService.addOrder(Order).subscribe(() =>
-       console.log(Order))
+    var order = { 
+      "idUser": 520
     };
+
+    console.log(order);
+
+    this.orderService.addOrder(order).subscribe(res => {
+      var res = res;
+      console.log(res);
+    });
+  }
 }

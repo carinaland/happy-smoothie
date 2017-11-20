@@ -20,8 +20,10 @@ var Smoothie = {
    
     getSmoothieForCart: function(id, callback) {
         var id1 = id.split(',');
-        return db.query("select  name, price, image,  ifnull(quantity, 1) as quantity from smoothies left join smoothieorder on smoothies.idSmoothie = smoothieorder.idSmoothie left join smoothies.order on smoothieorder.idOrder = smoothies.order.idOrder where smoothies.idSmoothie in (?)", [id1], callback);
+        console.log("fdffdf" + id)
+        return db.query("select  smoothies.idSmoothie, name, price, image,  ifnull(quantity, 1) as quantity from smoothies left join smoothieorder on smoothies.idSmoothie = smoothieorder.idSmoothie left join smoothies.order on smoothieorder.idOrder = smoothies.order.idOrder where smoothies.idSmoothie in (?)", [id1], callback);
     }
+    
     //some other Requests
     // ....
 };
