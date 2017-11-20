@@ -12,16 +12,12 @@ var Comment = {
         return db.query("select * from comments where idComments=?", [id], callback);
     },
     addComment: function(Comment, callback) {
-        console.log(Comment);
         qbq = db.query("Insert into comments values(?,?,?,?,?,?)", [0, Comment.idUser, Comment.idSmoothie, Comment.content, '0000-00-00 00:00:00', Comment.rating], function(err, result) {
             if (!err) {
-                console.log('Successfully added information.');
             } else {
-                console.log(result);
                 console.log('Was not able to add information to database.');
             }
         });
-        console.log(qbq);
         return qbq;
     },
     deleteComment: function(id, callback) {

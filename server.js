@@ -1,6 +1,13 @@
-var express = require('express');
-var cors = require('cors');
+var express = require('express')
+    , http = require('http');
+//make sure you keep this order
 var app = express();
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
+var cors = require('cors');
+
+
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
@@ -13,8 +20,6 @@ var path = require('path');
 const api = require('./api/routes/api');
 const ctrl = require('./api/routes/routes');
 
-app.use(express.static(path.join(__dirname, 'dist')));
-
 app.use('/api', api);
 app.use('/ctrl', ctrl);
 
@@ -22,14 +27,18 @@ app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, 'src/index.html'));
 });
 
+//SOKET
 
-
-
-app.on('listening',function(){
-    console.log('ok, server is running');
+io.on('connection', function(socket){
+    console.log('a user is connected');
+    socket.on('add-comment', function (comment) {
+        console.log('LOGBLOG');
+        io.sockets.emit('new-comment', comment);
+    });
 });
 
-app.listen(port);
+server.listen(port);
+
 
 
 console.log('product list RESTful API server startet on: ' + port);

@@ -34,6 +34,8 @@ import { CommentsComponent } from './smoothies/smoothie-details/comments/comment
 import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
 import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-comment/add-comment.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

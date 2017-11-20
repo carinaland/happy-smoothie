@@ -28,6 +28,11 @@ export class CommentService {
         .map(res => res.json());
   }
 
+  /**
+   * add one comment to database
+   * @param comment
+   * @returns {OperatorFunction<T, R>}
+   */
   addComment(comment){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');

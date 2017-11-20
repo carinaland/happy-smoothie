@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../comment.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-add-comment',
@@ -11,9 +12,14 @@ export class AddCommentComponent implements OnInit {
 
   comment = 'ddd';
 
+  private socket;
+
+  url = 'http://localhost:3100';
+
   constructor(private commentService: CommentService) { }
 
   ngOnInit() {
+    this.socket = io(this.url);
   }
 
   addComment(){
@@ -25,8 +31,12 @@ export class AddCommentComponent implements OnInit {
 
     this.commentService.addComment(comment).subscribe(res => {
       var res = res;
-      console.log(res);
     });
+
+    setTimeout(function(){
+      this.socket.emit('add-comment', comment);
+    }, 1);
+
   }
 
 }
