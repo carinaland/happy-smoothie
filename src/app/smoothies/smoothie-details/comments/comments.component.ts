@@ -25,7 +25,6 @@ export class CommentsComponent implements OnInit {
     this.getComments();
 
     this.socket.on('new-comment', () => {
-      console.log('new');
       this.getComments();
     });
   }

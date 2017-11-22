@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SmoothiesComponent } from './smoothies/smoothies.component';
@@ -29,6 +30,7 @@ import { UserService } from 'app/user.service';
 import { DetailsService } from 'app/details.service';
 import { CommentService } from 'app/smoothies/smoothie-details/comments/comment.service';
 import { CartService } from 'app/cart/cart-service';
+import { TropicalFruitsService} from 'app/smoothies/smoothie-details/description-section/tropical-fruits.service';
 
 import { CommentsComponent } from './smoothies/smoothie-details/comments/comments.component';
 import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
@@ -73,9 +75,10 @@ import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-c
     ]),
     AgmCoreModule.forRoot({
       apiKey: ''
-    })
+    }),
+    JsonpModule
   ],
-  providers: [OrderService, UserService, DetailsService, CommentService, CartService, CookieService],
+  providers: [OrderService, UserService, DetailsService, CommentService, CartService, CookieService, TropicalFruitsService, JsonpModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

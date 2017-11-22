@@ -19,21 +19,15 @@ export class AddToBasketComponent implements OnInit {
   }
 
   addToBasket(){
-
+    console.log(this.smoothie);
     if (this.cookieService.check('selectedSmoothies')) {
       this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
     }
 
-    //this.selectedSmoothies.push(this.smoothie.idSmoothie);
+    this.cookieService.deleteAll();
    
-    this.selectedSmoothies.push({"id": "1", "quantity": "1"});
-
-
-    
+    this.selectedSmoothies.push({"id": this.smoothie.idSmoothie, "quantity": "1"});
     this.cookieService.set( 'selectedSmoothies', JSON.stringify(this.selectedSmoothies) );
-    console.log(this.selectedSmoothies);
-
-
    
   }
 

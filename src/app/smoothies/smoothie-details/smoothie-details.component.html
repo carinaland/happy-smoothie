@@ -3,7 +3,10 @@
 </head>
 <div class="container">
     <h2>Smoothie-Details</h2>
-    <app-description-section [smoothie]="product"></app-description-section>
+    <div *ngIf='product'>
+        <app-description-section [smoothie]="product"></app-description-section>
+    </div>
+
     <br/>
     <app-comments></app-comments>
 </div>
