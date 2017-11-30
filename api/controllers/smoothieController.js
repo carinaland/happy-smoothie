@@ -1,3 +1,4 @@
+
 var Smoothie = require('../models/Smoothie');
 
 //just for example
@@ -31,5 +32,3 @@ module.exports.delete = function(req, res, next) {
         }
     });
 }
-
-

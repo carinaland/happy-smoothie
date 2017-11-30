@@ -25,6 +25,12 @@ app.get('*', function(req, res){
 
 
 
+
+app.on('listening',function(){
+    console.log('ok, server is running');
+});
+
 app.listen(port);
+
 
 console.log('product list RESTful API server startet on: ' + port);

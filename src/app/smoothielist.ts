@@ -1,28 +1,9 @@
-export class ISmoothie {
-    productId : number;
+export interface ISmoothie {
+    idSmoothie : number;
     name: string;
     description: string;
-    //description: string;
     price: number;
-    rating:number;
     imageUrl: string;
+    ingreName: string;
+
 }
-
-/*
-
-export class ISmoothie {
-    constructor(  
-        productId : number,
-        name: string,
-        description: string,
-        price: number,
-        rating:number,
-        imageUrl: string,
-        ) { }  
-} 
-
-
-
-
-
-*/

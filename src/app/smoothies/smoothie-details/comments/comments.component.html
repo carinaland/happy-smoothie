@@ -1,0 +1,11 @@
+<b>COMMENTS:</b>
+<div *ngFor='let comment of commentList'>
+  <app-comment [idComment]="comment.idComments"
+               [idUser]="comment.idUser"
+               [date]="comment.date"
+               [content]="comment.content"
+
+  ></app-comment>
+</div>
+
+<app-add-comment [idSmoothie]="idSmoothie" ></app-add-comment>

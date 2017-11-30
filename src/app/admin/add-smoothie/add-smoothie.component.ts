@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SmoothieService } from '../../admin/smoothie.service';
 import { AddSmothieService  } from '../../admin/add-smothie.service';
 
@@ -13,12 +13,29 @@ export class AddSmoothieComponent implements OnInit {
   
   ngOnInit() {
   }
-//newimage,newname, newprice, newingredients, newdescription
-  
-  AddSmoothie(){
+
+  addSmoothie(idSmoothie:HTMLInputElement,image: HTMLInputElement,name: HTMLInputElement, price: HTMLInputElement, ingredients: HTMLInputElement, description: HTMLInputElement): boolean {
+    console.log(`ID: ${idSmoothie.value}, Image: ${image.value}, Name: ${name.value} Price: ${price.value} Ingredient: ${ingredients.value} Description: ${description.value} `);
     var smoothie = {
-    //  'idSmoothie': this.idSmoothie,
-    //  'name': this.newname,
+      'idSmoothie': idSmoothie.value, 
+       'name': name.value,
+       'price': price.value,
+       'description':description.value,
+       'imageUrl': image.value
+     
+
+    };
+    this.addsmoothieService.addSmoothie(smoothie).subscribe(res => {
+      var res = res;
+      console.log(res);
+    });
+    return false;
+  }
+/*
+  addSmoothie(){
+    var smoothie = {
+    //'idSmoothie': this.idSmoothie,
+     //'name': this.newname,
     'idSmoothie':4,
     'name':'apple',
       'price': 3};
@@ -28,6 +45,20 @@ export class AddSmoothieComponent implements OnInit {
       console.log(res);
     });
   }
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

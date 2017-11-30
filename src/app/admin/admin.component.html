@@ -1,1 +1,17 @@
+<div class="container">
+    <div *ngIf="isLoggedIn">
+        <p class="navbar-text navbar-right">Logged In: {{user_displayName}} ({{user_email}})<p>
+      </div>
+      <div *ngIf="!isLoggedIn">
+        <p class="navbar-text navbar-right">Logged Out</p>
+      </div>
+  <div class="row">   
+      <h1>Welcome Admin</h1>
+      <p><button class="btn btn-sm btn-warning" (click)="logout()">Logout</button></p>   
+  </div>
+</div>
+
 <app-smoothie-items></app-smoothie-items>
+
+
+

@@ -5,10 +5,12 @@
 #contact ul {
   list-style-type: none;
 }
+h1{
+    color: #ff1e40;
+}
 
 #contact img{
 	float: left;
-	margin-right: 2rem;
     margin-top: 1rem;
 	width: 4rem;
 }

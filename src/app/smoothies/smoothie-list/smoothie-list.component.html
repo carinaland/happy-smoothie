@@ -3,22 +3,25 @@
   </head>
   
   <div class="container">
-  <div class='panel panel-primary'>
+  <div>
+    
     <div class="panel-body">
       <div >
           
-        <div class="col-xs-8">
-            <p>Search:</p>
+        <div class="col-xs-12">
+            <h1>Our Smoothies</h1>
+            <h2>Search Our Smoothies :</h2>
+            <p></p>
             <div class="input-group add-on">
                 <input  [(ngModel)]="listFilter" 
-                class="form-control" placeholder="e.g. fruity, bitter.." name="srch-term" id="srch-term" type="text">
+                class="form-control" placeholder="e.g. fruity, bitter.." name="srch" id="srch" type="text">
               </div>
         </div>
       </div>
 
       
 
-      <div class="col-xs-12 blogShort" *ngFor="let smoothie of filteredSmoothies">
+      <div class="col-xs-12 blogShort multiple-borders" *ngFor="let smoothie of filteredSmoothies">
         <h1>{{smoothie.name}} - {{smoothie.price | currency: "EUR" :true:"1.2-2"}}</h1>
         <img [src]="smoothie.imageUrl" [title]="smoothie.name" [style.width.px]="imageWidth" 
         [style.height.px]="imageHeight" [style.margin.px]="imageMargin"
@@ -29,7 +32,7 @@
           </p>
         </article>
         <app-star-rating [rating]="smoothie.rating"></app-star-rating>
-        <a class="btn btn-blog pull-right " href="#">READ MORE</a>
+        <a class="btn btn-blog pull-right "[routerLink]="['details/:' + smoothie.productId]">READ MORE</a>
         <a class="marginBottom10"></a>
       </div>
     </div>

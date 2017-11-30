@@ -5,19 +5,29 @@ import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SmoothiesComponent } from './smoothies/smoothies.component';
-import { SmoothieListComponent } from './smoothie-list/smoothie-list.component';
+import { SmoothieListComponent } from './smoothies/smoothie-list/smoothie-list.component';
+import { SmoothieDetailsComponent } from './smoothies/smoothie-details/smoothie-details.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { ContactComponent } from './contact/contact.component';
-import { ContactDetailsComponent } from './contact-details/contact-details.component';
-import { MapComponent } from './map/map.component';
+import { ContactDetailsComponent } from './contact/contact-details/contact-details.component';
+import { MapComponent } from './contact/map/map.component';
 import {RouterModule} from "@angular/router";
 
+import {DetailsService} from './details.service';
+import {CommentService} from './smoothies/smoothie-details/comments/comment.service';
+
 import { AgmCoreModule } from '@agm/core';
-import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
-import { CartDetailsComponent } from './cart-details/cart-details.component';
-import { PersonalDetailsComponent } from './personal-details/personal-details.component';
-import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
+import { PersonalDetailsComponent } from './cart/personal-details/personal-details.component';
+import { PaymentDetailsComponent } from './cart/payment-details/payment-details.component';
+
+import { CommentsComponent } from './smoothies/smoothie-details/comments/comments.component';
+import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
+import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-comment/add-comment.component';
+
+import { UserService } from 'app/user.service';
+import { OrderService } from 'app/order.service';
 
 @NgModule({
   declarations: [
@@ -28,11 +38,14 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
     ContactComponent,
     ContactDetailsComponent,
     MapComponent,
-    ShopComponent,
+    SmoothieDetailsComponent,
     CartComponent,
     CartDetailsComponent,
     PersonalDetailsComponent,
-    PaymentDetailsComponent
+    PaymentDetailsComponent,
+    CommentsComponent,
+    CommentComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,15 +53,16 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
     HttpModule,
     RouterModule.forRoot([
       {path: 'smoothies', component: SmoothiesComponent},
-      {path: 'shop', component: ShopComponent},
+      {path: 'smoothies/details/:id', component: SmoothieDetailsComponent},
+      {path: 'shop', component: CartComponent},
       {path: 'contact', component: ContactComponent},
-      {path: 'admin'}, component:admin}
+      //{path: 'admin', component:admin}
     ]),
     AgmCoreModule.forRoot({
       apiKey: ''
     })
   ],
-  providers: [],
+  providers: [OrderService, UserService, DetailsService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

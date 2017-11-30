@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DetailsService } from "../../details.service";
+import { ISmoothie } from "../smoothie-list/smoothies";
 
 @Component({
   selector: 'app-smoothie-details',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SmoothieDetailsComponent implements OnInit {
 
-  constructor() { }
+  product: ISmoothie;
+
+  constructor(private detailsService: DetailsService) { }
+
 
   ngOnInit() {
   }

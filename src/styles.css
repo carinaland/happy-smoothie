@@ -1,3 +1,4 @@
+
 @import './app/vendor/semantic.min.css';
 
 .ui.menu .item img.logo {
@@ -57,4 +58,5 @@ ul.ui.list li:before {
   clear: both;
   width: 100%;
 }
+
 
