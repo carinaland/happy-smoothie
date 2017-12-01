@@ -66,7 +66,7 @@ export class SmoothieItemsComponent implements OnInit {
   } */
 
   ngOnInit() {
-    this.getDatabaseData()
+    this.getDatabaseData();
   }
 
   showAddForm(){ 

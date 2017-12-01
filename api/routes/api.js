@@ -29,20 +29,18 @@ router.get('/Cart/:id', function(req, res, next) {
 });
 
 router.get('/Smoothies', function(req, res, next) {
-    console.log("api");
     Smoothie.getAllSmoothies(function(err, rows) {
         if (err) {
-            console.log(err);
             res.json(err);
         } else {
-            console.log(rows);
             res.json(rows);
         }
     });
 });
 
 //delete
-router.delete('/Smoothies/delete', function(req, res, next) {
+router.post('/Smoothies/delete', function(req, res, next) {
+    console.log('try to delete');
     Smoothie.deleteSmoothie(req.params.id, function(err, rows) {
          if (err) {
             res.json(err);
@@ -53,10 +51,6 @@ router.delete('/Smoothies/delete', function(req, res, next) {
 });
 //smoothie add
 router.post('/Smoothies/Add', function(req, res, next) {
-
-    console.log('apiiiiiiiiiii')
-    console.log(req.body);
-    console.log(Date.now);
     var smoothie = {
         'idSmoothie': req.body.idSmoothie,
         'name': req.body.name,
@@ -131,7 +125,6 @@ router.get('/Comments', function(req, res, next) {
 });
 
 router.get('/Smoothie/:id/Comments', function(req, res, next) {
-    console.log('work');
     Comment.getCommentsOfSmoothie(req.params.id, function(err, rows) {
         if (err) {
             res.json(err);
@@ -152,8 +145,6 @@ router.get('/Comment/:id', function(req, res, next) {
 });
 
 router.post('/Comment/add', function(req, res, next) {
-    console.log(req.body);
-    console.log(Date.now);
     var comment = {
         'idUser': req.body.idUser,
         'idSmoothie': req.body.idSmoothie,
@@ -172,7 +163,6 @@ router.post('/Comment/add', function(req, res, next) {
 
 //Order
 router.post('/Order/add', function(req, res, next) {
-    console.log("req.bodt" + req.body);
     var order = {
         'idUser': req.body.idUser,
         'idSmoothie': req.body.idSmoothie

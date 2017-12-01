@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Http, Headers, RequestOptions, Response} from '@angular/http'
 import { ISmoothie } from '../smoothielist';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -13,15 +13,20 @@ export class SmoothieService {
 
   
   getData() {
-    console.log("gettinbg to service");
      return this.http.get(this.apiUrl)
       .map((res:Response) => res.json());
      
-    } 
+    }
 
-    deleteSmoothie(idSmoothie):  Observable<ISmoothie>  {
-      return this.http.get('http://localhost:3100/api/Smoothies/delete'+ idSmoothie)
-          .map(res => res.json());
+    deleteSmoothie(idSmoothie) {
+    console.log('go to service');
+
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      var data = JSON.stringify(idSmoothie);
+      return this.http.post('http://localhost:3100/api/Smoothies/delete', data, {headers: headers})
+            .map(res => res.json());
   }
 /*
   getData(idSmoothie: number):  Observable<ISmoothie>  {

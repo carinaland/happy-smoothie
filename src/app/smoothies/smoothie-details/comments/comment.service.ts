@@ -39,7 +39,7 @@ export class CommentService {
 
     var data = JSON.stringify(comment);
 
-    return this.http.post(api + '/Comment/add', data, {headers: headers})
+    return this.http.post(api + 'Comment/add', data, {headers: headers})
         .map(res => res.json());
   }
 
