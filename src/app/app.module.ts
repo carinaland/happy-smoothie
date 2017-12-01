@@ -106,7 +106,7 @@ export const firebaseConfig = {
       {path: 'loginAdmin', component:LoginComponent}
     ]),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyD7_xl8mC74sHupd-EeGB2jthb4spdGcmo'
     }),
     JsonpModule
   ],
