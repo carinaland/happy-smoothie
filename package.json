@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angularfire": "^2.3.0",
-    "angularfire2": "^5.0.0-rc.4",
+    "angularfire2": "^5.0.0-rc.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-alpha.6",
     "connect-multiparty": "^2.1.0",
@@ -34,6 +34,8 @@
     "mysql": "^2.15.0",
     "ngx-cookie-service": "^1.0.9",
     "rxjs": "^5.1.0",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

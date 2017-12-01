@@ -28,7 +28,6 @@ router.get('/Cart/:id', function(req, res, next) {
     });
 });
 
-//all smoothies
 router.get('/Smoothies', function(req, res, next) {
     console.log("api");
     Smoothie.getAllSmoothies(function(err, rows) {
@@ -109,6 +108,17 @@ router.get('/User', function(req, res, next) {
     });
 });
 
+router.put('/User/update', function(req, res, next) {
+    User.updateUser(function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
+
 //Comments
 router.get('/Comments', function(req, res, next) {
     Comment.getAllComments(function(err, rows) {
@@ -121,6 +131,7 @@ router.get('/Comments', function(req, res, next) {
 });
 
 router.get('/Smoothie/:id/Comments', function(req, res, next) {
+    console.log('work');
     Comment.getCommentsOfSmoothie(req.params.id, function(err, rows) {
         if (err) {
             res.json(err);
@@ -160,13 +171,11 @@ router.post('/Comment/add', function(req, res, next) {
 });
 
 //Order
-router.post('/Order', function(req, res, next) {
-    console.log(req.body);
-    console.log(Date.now);
+router.post('/Order/add', function(req, res, next) {
+    console.log("req.bodt" + req.body);
     var order = {
-        'idOrder': req.body.idOrder,
         'idUser': req.body.idUser,
-        'date': Date.now
+        'idSmoothie': req.body.idSmoothie
     }
     Order.addOrder(order, function(err, rows) {
         if (err) {

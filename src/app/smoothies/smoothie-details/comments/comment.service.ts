@@ -28,12 +28,16 @@ export class CommentService {
         .map(res => res.json());
   }
 
+  /**
+   * add one comment to database
+   * @param comment
+   * @returns {OperatorFunction<T, R>}
+   */
   addComment(comment){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     var data = JSON.stringify(comment);
-    console.log(data);
 
     return this.http.post(api + '/Comment/add', data, {headers: headers})
         .map(res => res.json());

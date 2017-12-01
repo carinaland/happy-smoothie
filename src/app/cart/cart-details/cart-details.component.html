@@ -1,4 +1,4 @@
-<table class="cs-table table table-striped p-a-1">
+<table class="cs-table table table-striped p-a-1" *ngIf="cart && cart.length > 0; else EmptyCartInfo">
   <thead>
     <tr>
       <th>Image</th>
@@ -10,11 +10,8 @@
     </tr>
   </thead>
   <tbody>
-     <tr  colspan="12" *ngIf="cart.length == 0">    
-      <td class="text-center">Your cart is empty</td>
-    </tr>
   <tr>
-    <tr *ngFor="let c of cart; let i = index">
+    <tr *ngFor="let c of cart; let i = index;">
       <td><img [src]='c.image' [title]='c.name' [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'></td>
       <td>{{c.name}}</td>
       <td><button class="btn btn-success btn-sm" (click)="incrementQuantity(i)"><span class="glyphicon glyphicon-plus"></span></button>
@@ -28,7 +25,12 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="4" class="text-right">Total:{{totalCost}}</td>
+      <td colspan="4" class="text-right" >Total:{{total | currency: "EUR" :true:"1.2-2"}}</td>
     </tr>
   </tfoot>
 </table>
+<ng-template #EmptyCartInfo>
+  <div>
+    <p>Your cart is empty</p>
+  </div>
+</ng-template>

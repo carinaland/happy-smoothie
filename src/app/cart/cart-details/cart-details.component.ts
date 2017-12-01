@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICart } from 'app/cart/cart';
 import { CartService } from 'app/cart/cart-service';
+import { CookieService } from 'ngx-cookie-service';
+import { ISelectedSmoothie } from 'app/cart/cart-details/selectedSmoothie';
 
 
 @Component({
@@ -9,57 +11,96 @@ import { CartService } from 'app/cart/cart-service';
 })
 export class CartDetailsComponent implements OnInit {
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private cookieService: CookieService) { }
 
   ngOnInit() {
-    //this.countTotalCost(this.cart);
-    this.loadCart();
     
+    this.loadCart();
   }
   imageWidth: number = 50;
   imageHeight: number = 50;
   imageMargin: number = 2;
 
-  //quantity: number = 1;
   subtotal: number;
   totalCost: number;
 
   cart: ICart[];
- 
+  //selectedSmoothies: ISelectedSmoothie[];
+  public selectedSmoothies = [];
+  cookieValue: string;
+  objSmoothie: any;
+  objSmoothieArray = [];
+  smoothieIDs: string = "";
+  public smoothieIDsArray = [];
+  public smoothieQuantity = [];
   loadCart(): void {
-    this.cartService.getCart("1, 2").subscribe((returnedCart) => {
+
+    this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
+   
+    for (var i = 0; i < this.selectedSmoothies.length; i++) {
+      this.objSmoothie = this.selectedSmoothies[i];
+      this.objSmoothieArray.push(this.selectedSmoothies[i]);
+      this.smoothieIDsArray.push(this.objSmoothie.id);
+      this.smoothieQuantity.push(this.objSmoothie.quantity);
+      this.smoothieIDs += this.objSmoothie.id + ',';
+    }
+
+    //console.log("cookieQuantity" + this.smoothieQuantity)
+    //console.log("cookieId" + this.smoothieIDsArray)
+
+    this.cartService.getCart(this.smoothieIDs).subscribe((returnedCart) => {
       this.cart = returnedCart;
+      
+      for (var i = 0; i < this.cart.length; i++) {
+
+        if (this.cart[i].idSmoothie == this.objSmoothieArray[i].id) {
+
+          this.cart[i].quantity += this.objSmoothieArray[i].quantity - this.cart[i].quantity
+        }
+      }console.log(this.cart);
+      this.countTotal(this.cart);
     })
   }
 
   //increment quantity
-  incrementQuantity(i) {
-    this.cart[i].quantity += 1;
+  incrementQuantity(index) {
+    this.cart[index].quantity += 1;
+    this.objSmoothie = this.selectedSmoothies[index];
+    this.objSmoothie.quantity = this.cart[index].quantity;
+    this.selectedSmoothies[index] = this.objSmoothie;
+    this.cookieService.set('selectedSmoothies', JSON.stringify(this.selectedSmoothies));
+    this.total += this.cart[index].price;
+    
   }
 
   //decrementt quantity
-  decrementQuantity(i) {
-    if (this.cart[i].quantity > 1)
-      this.cart[i].quantity -= 1;
+  decrementQuantity(index) {
+    if (this.cart[index].quantity > 1)
+      this.cart[index].quantity -= 1;
+    this.objSmoothie = this.selectedSmoothies[index];
+    this.objSmoothie.quantity = this.cart[index].quantity;
+    this.selectedSmoothies[index] = this.objSmoothie;
+    this.cookieService.set('selectedSmoothies', JSON.stringify(this.selectedSmoothies));
+    this.total -= this.cart[index].price;
   }
 
   //remove the smoothie from cart
-  removeProduct(i) {
-    this.cart.splice(i, 1);
+  removeProduct(index) {
+    this.total -= this.cart[index].price * this.cart[index].quantity
+    this.cart.splice(index, 1);
+    this.selectedSmoothies.splice(index, 1);
+    this.cookieService.set('selectedSmoothies', JSON.stringify(this.selectedSmoothies));
+    
   }
 
-  /*totalArray: any[];
-  countTotalCost(cart: ICart[]) {
-    this.totalArray = [];
+  total: number = 0;
+  //calculate total
+  countTotal(cart){
+    console.log(this.cart)
     for (var i = 0; i < this.cart.length; i++) {
-      let x = cart[i];
-      this.totalArray.push({
-        price: x.price,
-        quantity: x.quantity
-      });
-     return this.totalCost += x.price * x.quantity;
-    
-    }
-    console.log(this.totalCost);
-  }*/
+      this.total += this.cart[i].price * this.cart[i].quantity
+      console.log(this.total)
+ }
 }
+}
+  

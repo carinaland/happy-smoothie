@@ -9,9 +9,10 @@ var User = {
         return db.query("select * from user where idUser=?", [id], callback);
     },
    
-    //updateUser: function(id, Task, callback) {
-        //return db.query("update user set name=? where idUser=?", [User.name, , idUser], callback);
-   // }
+    /*updateUser: function(id, Task, callback) {
+        console.log("user model przed query" + id)
+        return db.query("update user set name=? where idUser=?", [ala, , 1], callback);
+    }*/
     //some other Requests
 
 

@@ -59,7 +59,7 @@ import { OrderService } from 'app/order.service';
       //{path: 'admin', component:admin}
     ]),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyD7_xl8mC74sHupd-EeGB2jthb4spdGcmo'
     })
   ],
   providers: [OrderService, UserService, DetailsService, CommentService],
