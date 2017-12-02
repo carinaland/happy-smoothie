@@ -12,6 +12,7 @@ export class CommentComponent implements OnInit {
   @Input() idUser;
   @Input() date;
   @Input() content;
+  @Input() rating;
 
   comment: any;
   constructor(private commentService: CommentService) {  }

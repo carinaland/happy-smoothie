@@ -158,12 +158,14 @@ router.get('/Comment/:id', function(req, res, next) {
 });
 
 router.post('/Comment/add', function(req, res, next) {
+    var date = Date.now();
+    console.log(date);
     var comment = {
         'idUser': req.body.idUser,
         'idSmoothie': req.body.idSmoothie,
         'content': req.body.content,
-        'date': Date.now,
-        'rating': req.body.rating
+        'rating': req.body.rating,
+        'date': date,
     }
     Comment.addComment(comment, function(err, rows) {
         if (err) {

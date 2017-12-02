@@ -17,6 +17,7 @@
             <div class="rating"><app-star-rating [rating]="smoothie.averageRating"></app-star-rating></div>
             <div class="smoothie-description">{{smoothie.description}}</div>
             <div class="price">{{smoothie.price}} €</div>
+            Ingrediants:
             <div class="ingrediants" *ngIf='ingrediants'>
               <div class="ingrediant-container" *ngFor="let ingre of ingrediants">
                 <div class="ingrediant" (click)="showIngrediantDetails(ingre.name)">{{ingre.name}}</div>

@@ -5,3 +5,14 @@
 .ingrediant{
     cursor: pointer;
 }
+
+.ingrediants{
+    margin-top:10px;
+    border-left: 1px solid black;
+    padding-left:5px;
+}
+
+.price{
+    font-weight:bold;
+    font-size:1.5em;
+}

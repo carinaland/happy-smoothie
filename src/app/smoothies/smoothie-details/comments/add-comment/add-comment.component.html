@@ -4,7 +4,7 @@
                   [(ngModel)]="comment"
         ></textarea>
         <div class="w-50">
-            <input [(ngModel)]="rating" type="text" [style.width.px]="20" min="1" max="5"> / 5 Sternen
+            <input [(ngModel)]="rating" type="text" [style.width.px]="30" min="1" max="5"> / 5 Sternen
             <app-star-rating [rating]="rating"></app-star-rating>
         </div>
         <div class="w-50 right">
