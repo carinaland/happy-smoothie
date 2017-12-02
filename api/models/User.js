@@ -9,10 +9,20 @@ var User = {
         return db.query("select * from user where idUser=?", [id], callback);
     },
    
-    /*updateUser: function(id, Task, callback) {
-        console.log("user model przed query" + id)
-        return db.query("update user set name=? where idUser=?", [ala, , 1], callback);
-    }*/
+    updateUser: function(User, Task, callback) {
+        console.log("models: " + User.iduser)
+        qbq =  db.query("update user set name=?, email = ?, street = ?, city=?, county=?, eircode=? where iduser=?", [User.name, User.email, User.street, User.city, User.county, User.eircode, User.iduser], function(err, result)
+        {
+                if (!err) {
+                    console.log('Successfully added information.');
+                } else {
+                    console.log(result);
+                    console.log('Was not able to add information to database.');
+                }
+            });
+            console.log(qbq);
+            return qbq;
+        }  
     //some other Requests
 
 

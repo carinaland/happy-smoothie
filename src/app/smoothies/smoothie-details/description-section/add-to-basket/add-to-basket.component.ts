@@ -24,10 +24,11 @@ export class AddToBasketComponent implements OnInit {
       this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
     }
 
-    this.cookieService.deleteAll();
+    //this.cookieService.deleteAll();
    
     this.selectedSmoothies.push({"id": this.smoothie.idSmoothie, "quantity": "1"});
     this.cookieService.set( 'selectedSmoothies', JSON.stringify(this.selectedSmoothies) );
+    console.log("add to cart" + this.selectedSmoothies);
    
   }
 

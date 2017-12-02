@@ -23,7 +23,6 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angularfire": "^2.3.0",
-    "angularfire2": "^5.0.0-rc.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-alpha.6",
     "connect-multiparty": "^2.1.0",

@@ -31,6 +31,8 @@ import { SmoothieItemsComponent } from './admin/smoothie-items/smoothie-items.co
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from "@angular/router";
 import { OrderService } from 'app/order.service';
+import { OrdersmoothieService } from 'app/cart/ordersmoothie.service';
+
 import { DescriptionSectionComponent } from './smoothies/smoothie-details/description-section/description-section.component';
 import { AddToBasketComponent } from './smoothies/smoothie-details/description-section/add-to-basket/add-to-basket.component';
 import { CookieService } from 'ngx-cookie-service';
@@ -116,6 +118,7 @@ export const firebaseConfig = {
     SmoothieService, 
     AddSmothieService, 
     OrderService, 
+    OrdersmoothieService,
     UserService, 
     DetailsService, 
     CommentService, 

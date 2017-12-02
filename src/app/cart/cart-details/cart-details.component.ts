@@ -36,28 +36,31 @@ export class CartDetailsComponent implements OnInit {
   loadCart(): void {
 
     this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
-   
+
+    this.selectedSmoothies.sort(function (a, b) {
+      return a.id - b.id
+    });
+
     for (var i = 0; i < this.selectedSmoothies.length; i++) {
       this.objSmoothie = this.selectedSmoothies[i];
-      this.objSmoothieArray.push(this.selectedSmoothies[i]);
+      this.objSmoothieArray.push(this.objSmoothie);
+      //console.log("objSmoothieArray.id" + this.objSmoothie.id);
+     // console.log("objSmoothieArray.quantity" + this.objSmoothie.quantity);
       this.smoothieIDsArray.push(this.objSmoothie.id);
       this.smoothieQuantity.push(this.objSmoothie.quantity);
       this.smoothieIDs += this.objSmoothie.id + ',';
     }
-
-    //console.log("cookieQuantity" + this.smoothieQuantity)
-    //console.log("cookieId" + this.smoothieIDsArray)
-
+    
     this.cartService.getCart(this.smoothieIDs).subscribe((returnedCart) => {
       this.cart = returnedCart;
-      
+      console.log("cart len" + this.cart.length);
       for (var i = 0; i < this.cart.length; i++) {
 
         if (this.cart[i].idSmoothie == this.objSmoothieArray[i].id) {
 
           this.cart[i].quantity += this.objSmoothieArray[i].quantity - this.cart[i].quantity
         }
-      }console.log(this.cart);
+      } 
       this.countTotal(this.cart);
     })
   }

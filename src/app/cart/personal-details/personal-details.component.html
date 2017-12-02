@@ -1,14 +1,14 @@
-<form name="myForm"  *ngFor="let u of user" novalidate> 
+<form name="myForm"   *ngFor="let u of user" novalidate > 
   <label for="firstName">Name:</label>
   <div class="row">
     <div class="col-md-12">
-      <input type="text" class="form-control" name="name" value={{u.name}} id="firstName" #name required />
+      <input type="text" class="form-control" name="name" value={{u.name}} #name required />
     </div>
   </div>
-  <label for="address1" class="control-label">Address: </label>
+  <label for="street" class="control-label">Street: </label>
   <div class="row">
     <div class="col-md-12">
-      <input type="text" class="form-control" name="address" value={{u.address}} #address/>
+      <input type="text" class="form-control" name="street" value={{u.street}} #street/>
     </div>
   </div>
   <div class="row">
@@ -25,9 +25,16 @@
       <input type="text" class="form-control" name="eircode" value={{u.eircode}}  #eircode/>
     </div>
   </div>
+  <label for="firstName">Email:</label>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="form-control" name="email" value={{u.email}} #email required />
+    </div>
+  </div>
   <div  class="row text-right">
     <div class="col-sm-12">
-      <button type="subbmit" class="btn btn-success btn-sm" (click)="updateUser()">Edit</button>
+        <button type="subbmit" class="btn btn-success btn-sm" (click)="editUserDetails()" >Edit</button>
+      <button type="subbmit" class="btn btn-success btn-sm" (click)="updateUser(name, street, city, county, eircode, email)" *ngIf="savePersonalDetails">Save</button>
     </div>
   </div>
 </form>

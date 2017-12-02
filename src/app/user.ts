@@ -1,8 +1,8 @@
 export interface IUser {
-    userId : number;
+    iduser : number;
     userRoleId: number;
     name: string;
-    address: string;
+    street: string;
     city:string;
     county: string;
     eircode: string;
