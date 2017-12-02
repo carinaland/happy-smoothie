@@ -3,25 +3,29 @@ import { Router } from '@angular/router';
 import { AuthService } from './providers/auth.service';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
+import { Observable } from 'rxjs/Rx';
+import * as firebase from 'firebase';
+import { AuthUserService } from 'app/providers/auth-user.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  /*title = 'app';
+export class AppComponent { 
+  title = 'app';
   private isLoggedIn: Boolean;
   private user_displayName: String;
   private user_email: String;
 
-  constructor(private router: Router, public afAuth: AngularFireAuth) {
+  constructor(public authService: AuthUserService,private router: Router, public afAuth: AngularFireAuth) {
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (user != null) {
         this.isLoggedIn = true;
         this.user_displayName = user.displayName;
         this.user_email = user.email;
         console.log("Logged in");
-        this.router.navigate(['admin']);
+      //  this.router.navigate(['home']);
       }
       else {      
        console.log("Logged out");
@@ -29,11 +33,16 @@ export class AppComponent {
        this.user_email ='';
       // this.router.navigate(['loginAdmin']);
       }
-
     });
   }
 
-*/
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['home']);
+    this.user_displayName = '';
+    this.user_email ='';
+  }
+
  /* private isLoggedIn: Boolean;
   private user_displayName: String;
   private user_email: String;
@@ -57,9 +66,10 @@ export class AppComponent {
       }
     );
   } */
-
-  title = 'app';
-
 }
+
+
+
+
 
 
