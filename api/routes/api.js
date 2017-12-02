@@ -113,6 +113,28 @@ router.put('/User/update', function(req, res, next) {
     });
 });
 
+router.put('/User/Update/:id', function(req, res, next) {
+    console.log('work');
+    console.log("user api check");
+    console.log(req.body);
+    var user = {
+        'iduser': req.body.iduser,
+        'name': req.body.name,
+        'email': req.body.email,
+        'street': req.body.street,
+        'city': req.body.city,
+        'county': req.body.county,
+        'eircode': req.body.eircode,
+    }
+    User.updateUser(user, function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
 
 //Ingrediants
 router.get('/Smoothie/:id/Ingrediants', function(req, res, next) {
@@ -179,9 +201,10 @@ router.post('/Comment/add', function(req, res, next) {
 
 //Order
 router.post('/Order/add', function(req, res, next) {
+    console.log("req.body" + req.body);
     var order = {
         'idUser': req.body.idUser,
-        'idSmoothie': req.body.idSmoothie
+        'date': req.body.date,
     }
     Order.addOrder(order, function(err, rows) {
         if (err) {
@@ -193,7 +216,6 @@ router.post('/Order/add', function(req, res, next) {
 });
 
 
-
 router.get('/Order', function(req, res, next) {
     Order.getAllOrders(function(err, rows) {
         if (err) {
@@ -202,6 +224,34 @@ router.get('/Order', function(req, res, next) {
             res.json(rows);
         }
     });
+});
+
+
+//SmoothieOrders - link table 
+router.get('/SmoothieOrders', function(req, res, next) {
+    Smoothieorders.getAllSmoothieOrders(function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
+//SmoothieOrders - link table 
+router.post('/SmoothieOrders/add', function(req, res, next) {
+    var smoothieorder = {
+        'idSmoothie': req.body.idSmoothie,
+        'quantity' : req.body.quantity
+    }
+    console.log("check api"  + smoothieorder.idSmoothie);
+    Smoothieorders.addSmoothieOrder(smoothieorder, function(err, rows) {
+        if (err) {
+           res.json(err);
+        } else {
+           res.json(rows);
+        }
+   });
 });
 
 module.exports = router;

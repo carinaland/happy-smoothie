@@ -12,7 +12,7 @@
   <tbody>
   <tr>
     <tr *ngFor="let c of cart; let i = index;">
-      <td><img [src]='c.image' [title]='c.name' [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'></td>
+      <td><img [src]='c.imageUrl' [title]='c.name' [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'></td>
       <td>{{c.name}}</td>
       <td><button class="btn btn-success btn-sm" (click)="incrementQuantity(i)"><span class="glyphicon glyphicon-plus"></span></button>
       {{c.quantity}}

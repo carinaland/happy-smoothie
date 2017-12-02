@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ISmoothie } from 'app/smoothies/smoothie-list/smoothies';
 import { Http, RequestMethod, Headers } from "@angular/http";
 import { OrderService } from 'app/order.service';
+import { OrdersmoothieService } from './ordersmoothie.service';
+
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +13,8 @@ import { OrderService } from 'app/order.service';
 export class CartComponent implements OnInit {
   smoothies: ISmoothie[];
   showAdd: boolean = false;
-  constructor(private orderService: OrderService) { }
+  lastOrderId: number;
+  constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService) { }
 
   ngOnInit() {
 
@@ -22,12 +25,12 @@ export class CartComponent implements OnInit {
   }
 
 
-  addOrder(){
+  addOrder() {
     console.log("ok");
-    var order = { 
-      "idUser": 520
-    };
-
+    var order = {
+      "idUser": 5000,
+      "date": new Date()
+    }
     console.log(order);
 
     this.orderService.addOrder(order).subscribe(res => {
@@ -35,4 +38,27 @@ export class CartComponent implements OnInit {
       console.log(res);
     });
   }
+
+  getLastOrderId() {
+    this.lastOrderId
+  };
+
+  addSmoothieOrder() {
+    console.log("check addSmoothieOrder");
+    var smoothieorder = {
+      "idSmoothie": 100,
+      "quantity": 200
+    }
+    this.ordersmoothieService.addSmoothieOrder(smoothieorder).subscribe(res => {
+      var res = res;
+      console.log("check addSmoothieOrder 2");
+    });
+  }
+
+
+  /*addTotalOrder(){
+    this.addOrder();
+    this.addSmoothieOrder();
+  }*/
+
 }

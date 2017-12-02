@@ -31,6 +31,8 @@ import { SmoothieItemsComponent } from './admin/smoothie-items/smoothie-items.co
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from "@angular/router";
 import { OrderService } from 'app/order.service';
+import { OrdersmoothieService } from 'app/cart/ordersmoothie.service';
+
 import { DescriptionSectionComponent } from './smoothies/smoothie-details/description-section/description-section.component';
 import { AddToBasketComponent } from './smoothies/smoothie-details/description-section/add-to-basket/add-to-basket.component';
 import { CookieService } from 'ngx-cookie-service';
@@ -52,6 +54,19 @@ import { AuthService } from './providers/auth.service';
 import { LoginComponent } from './admin/login/login.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+
+
+import { AuthGuard } from './providers/auth.guard';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatToolbarModule, MatInputModule, MatListModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthUserService } from './providers/auth-user.service';
+import { NotificationService } from './providers/notification.service';
+import { NotificationComponent } from './notification/notification.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDEqtsaNEzKQGOfcarbh38phCD7tDvjAcg",
@@ -88,10 +103,22 @@ export const firebaseConfig = {
     AddToBasketComponent,
     HomeComponent,
     LoginComponent,
+    NotificationComponent,
+    SigninComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatListModule,
+    BrowserAnimationsModule,
+
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot([
@@ -103,19 +130,27 @@ export const firebaseConfig = {
       {path: 'shop', component: CartComponent},
       {path: 'contact', component: ContactComponent},
       {path: 'admin', component:AdminComponent},
-      {path: 'loginAdmin', component:LoginComponent}
+      {path: 'loginAdmin', component:LoginComponent},
+      {path: 'login', component:SigninComponent},
+      {path: 'signup', component:SignupComponent},
     ]),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD7_xl8mC74sHupd-EeGB2jthb4spdGcmo'
     }),
     JsonpModule
   ],
   providers: [
+    AuthUserService, 
+    NotificationService,
+    AuthGuard,
     AuthService, 
     AngularFireAuth,
     SmoothieService, 
     AddSmothieService, 
     OrderService, 
+    OrdersmoothieService,
     UserService, 
     DetailsService, 
     CommentService, 

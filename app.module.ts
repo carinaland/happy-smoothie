@@ -28,6 +28,8 @@ import { AddCommentComponent } from './smoothies/smoothie-details/comments/add-c
 
 import { UserService } from 'app/user.service';
 import { OrderService } from 'app/order.service';
+import { OrdersmoothieService } from 'app/cart/ordersmoothie.service';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { OrderService } from 'app/order.service';
       apiKey: 'AIzaSyD7_xl8mC74sHupd-EeGB2jthb4spdGcmo'
     })
   ],
-  providers: [OrderService, UserService, DetailsService, CommentService],
+  providers: [OrderService, UserService, DetailsService, CommentService, OrdersmoothieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

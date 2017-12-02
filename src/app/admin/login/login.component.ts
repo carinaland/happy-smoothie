@@ -11,7 +11,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginComponent implements OnInit {
   title = 'app';
-  private isLoggedIn: Boolean;
+  public isLoggedIn: Boolean;
   private user_displayName: String;
   private user_email: String;
 

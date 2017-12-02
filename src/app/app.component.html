@@ -1,9 +1,11 @@
-<!--<div *ngIf="isLoggedIn">
+<div *ngIf="isLoggedIn">
   <p class="navbar-text navbar-right">Logged In: {{user_displayName}} ({{user_email}})<p>
 </div>
 <div *ngIf="!isLoggedIn">
   <p class="navbar-text navbar-right">Logged Out</p>
-</div> -->
+</div>
+<p><button class="btn btn-sm btn-warning" (click)="logout()">Log Out</button></p>   
+
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
@@ -54,8 +56,8 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li><a class="active item" [routerLink]="['loginAdmin']">Admin</a></li>        
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </div>
@@ -70,8 +72,8 @@
 
     <ul class="nav navbar-nav navbar-right">
        <li><a  [routerLink]="['loginAdmin']">Admin</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li><a  [routerLink]="['home']"> Home</a></li>
