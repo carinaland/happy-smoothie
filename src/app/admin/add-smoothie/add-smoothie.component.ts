@@ -8,22 +8,22 @@ import { AddSmothieService  } from '../../admin/add-smothie.service';
   styleUrls: ['./add-smoothie.component.css']
 })
 export class AddSmoothieComponent implements OnInit {
+ // @Input() idSmoothie;
   showAdd:boolean = false;
   constructor(private addsmoothieService : AddSmothieService) { }
   
   ngOnInit() {
   }
 
-  addSmoothie(idSmoothie:HTMLInputElement,image: HTMLInputElement,name: HTMLInputElement, price: HTMLInputElement, ingredients: HTMLInputElement, description: HTMLInputElement): boolean {
-    console.log(`ID: ${idSmoothie.value}, Image: ${image.value}, Name: ${name.value} Price: ${price.value} Ingredient: ${ingredients.value} Description: ${description.value} `);
+  addSmoothie(image: HTMLInputElement,name: HTMLInputElement, price: HTMLInputElement, ingredients: HTMLInputElement, description: HTMLInputElement): boolean {
+    console.log(` Image: ${image.value}, Name: ${name.value} Price: ${price.value} Ingredient: ${ingredients.value} Description: ${description.value} `);
     var smoothie = {
-      'idSmoothie': idSmoothie.value, 
+     // 'idSmoothie': this.idSmoothie,
        'name': name.value,
        'price': price.value,
+      // 'ingredient': ingredients.value,
        'description':description.value,
        'imageUrl': image.value
-     
-
     };
     this.addsmoothieService.addSmoothie(smoothie).subscribe(res => {
       var res = res;

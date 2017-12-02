@@ -11,6 +11,7 @@ export class AddSmothieService {
   ) {}
 
     addSmoothie(smoothie){
+      console.log('Check add smoothie service!!!!!!');
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
   

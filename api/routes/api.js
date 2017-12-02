@@ -56,8 +56,8 @@ router.post('/Smoothies/Add', function(req, res, next) {
         'name': req.body.name,
         'price': req.body.price,
         'description': req.body.description,
-        'imageUrl': req.body.imageUrl
-      //  'averageRating':req.body.averageRating,
+        'imageUrl': req.body.imageUrl,
+      'averageRating':req.body.averageRating,
     }
     Smoothie.addSmoothie(smoothie, function(err, rows) {
         if (err) {
@@ -69,16 +69,25 @@ router.post('/Smoothies/Add', function(req, res, next) {
 });
 
 //update smoothie
-router.put('/Smoothies/update', function(req, res, next) {
-    Smoothie.updateSmoothie(function(err, rows) {
+router.put('/Smoothies/update/:id', function(req, res, next) {
+    console.log('api Update Smoothie');
+    console.log(req.body);
+    var smoothie = {
+        'idSmoothie': req.body.idSmoothie,
+        'name': req.body.name,
+        'price': req.body.price,
+        'description': req.body.description,
+        'imageUrl': req.body.imageUrl,
+      'averageRating':req.body.averageRating,
+    }
+    Smoothie.addSmoothie(smoothie, function(err, rows) {
         if (err) {
-            res.json(err);
+           res.json(err);
         } else {
-            res.json(rows);
+           res.json(rows);
         }
-    });
+   });
 });
-
 
 
 //User
@@ -133,7 +142,6 @@ router.put('/User/Update/:id', function(req, res, next) {
         }
     });
 });
-
 
 //Comments
 router.get('/Comments', function(req, res, next) {

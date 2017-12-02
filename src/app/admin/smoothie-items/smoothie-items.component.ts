@@ -25,12 +25,23 @@ export class SmoothieItemsComponent implements OnInit {
     this._smoothieService.getData().subscribe(
       data => this.Data = data);
   }
-  /*
-  getDatabaseData() {
-    this._smoothieService.getData(2).subscribe(
-      data => this.Data = data);
+
+  updateSmoothie(editimage: HTMLInputElement,editname: HTMLInputElement, editPrice: HTMLInputElement, editIngre: HTMLInputElement, editDes: HTMLInputElement): boolean {
+    console.log(` Image: ${editimage.value}, Name: ${editname.value} Price: ${editPrice.value} Ingredient: ${editIngre.value} Description: ${editDes.value} `);
+    var smoothie = {
+     // 'idSmoothie': this.idSmoothie,
+       'name': editname.value,
+       'price': editPrice.value,
+       'description':editDes.value,
+       'imageUrl': editimage.value
+    };
+    this._smoothieService.updateSmoothie(smoothie).subscribe(res => {
+      var res = res;
+      console.log(res);
+    });
+    return false;
   }
-  */
+
   /*
   RemoveSmoothie(i) {
     this.smoothie.splice(i, 1);
