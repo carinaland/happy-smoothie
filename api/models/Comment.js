@@ -3,16 +3,16 @@ var Comment = {
 
     //CRUD
     getAllComments: function(callback) {
-        return db.query("Select * from comments", callback);
+        return db.query("Select * from comments left join user on comments.idUser = user.iduser", callback);
     },
     getCommentsOfSmoothie: function(smoothieId, callback) {
-        return db.query("Select * from comments where idSmoothie=?", [smoothieId], callback);
+        return db.query("Select * from comments left join user on comments.idUser = user.iduser where idSmoothie=?", [smoothieId], callback);
     },
     getCommentById: function(id, callback) {
         return db.query("select * from comments where idComments=?", [id], callback);
     },
     addComment: function(Comment, callback) {
-        qbq = db.query("Insert into comments values(?,?,?,?,?,?)", [0, Comment.idUser, Comment.idSmoothie, Comment.content, '0000-00-00 00:00:00', Comment.rating], function(err, result) {
+        qbq = db.query("Insert into comments values(?,?,?,?,?,?)", [0, Comment.idUser, Comment.idSmoothie, Comment.content, Comment.rating, Comment.date], function(err, result) {
             if (!err) {
             } else {
                 console.log('Was not able to add information to database.');

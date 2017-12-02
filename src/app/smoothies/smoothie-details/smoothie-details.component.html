@@ -2,11 +2,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <div class="container">
-    <h2>Smoothie-Details</h2>
     <div *ngIf='product'>
         <app-description-section [smoothie]="product"></app-description-section>
     </div>
 
     <br/>
-    <app-comments></app-comments>
+    <div *ngIf='product'>
+        <app-comments [passedId]="passedId"></app-comments>
+    </div>
 </div>

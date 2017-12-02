@@ -4,5 +4,26 @@
 }
 
 textarea{
-    width:80%;
+    width:100%;
+}
+
+.comment-container{
+    border:1px solid black;
+    background-color: #FFDEDE;
+    padding:10px;
+    display:inline-block;
+}
+
+.red{
+    background-color:#E20B2F !important;
+}
+
+.w-50{
+    display:table-cell;
+    width:50%;
+    float:left;
+}
+
+.right{
+    text-align:right;
 }

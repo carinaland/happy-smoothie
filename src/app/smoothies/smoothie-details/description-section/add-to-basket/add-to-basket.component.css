@@ -1,0 +1,14 @@
+.button-container{
+    text-align:right;
+}
+
+.basket-button{
+    border: 1px solid black;
+    border-radius: 3px;
+    color: white;
+    background-color: #E20B2F;
+    padding:10px;
+    margin:15px;
+    display: inline-block;
+    cursor: pointer;
+}

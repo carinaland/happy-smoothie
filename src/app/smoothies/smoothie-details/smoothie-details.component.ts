@@ -25,7 +25,6 @@ export class SmoothieDetailsComponent implements OnInit {
     });
 
     this.detailsService.getSmoothie(this.passedId).subscribe(product => {
-      console.log(product);
       this.product = product[0];
     });
 
