@@ -10,7 +10,8 @@ import * as io from 'socket.io-client';
 export class AddCommentComponent implements OnInit {
   @Input() idSmoothie;
 
-  comment = 'ddd';
+  comment = '';
+  rating: number = 5;
 
   private socket;
 
@@ -27,7 +28,7 @@ export class AddCommentComponent implements OnInit {
       'idUser': 2,
       'idSmoothie': this.idSmoothie,
       'content': this.comment,
-      'rating': 3};
+      'rating': this.rating};
 
     this.commentService.addComment(comment).subscribe(res => {
       var res = res;

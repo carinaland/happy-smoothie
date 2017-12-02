@@ -1,8 +1,14 @@
-<div class="w-a">
+<div class="w-a comment-container">
     <div class="">
-        <textarea placeholder="What are you doing right now?"
+        <textarea placeholder="...add comment here"
                   [(ngModel)]="comment"
         ></textarea>
-        <button type="submit" class="btn btn-success green" (click)="addComment()"><i class="fa fa-share"></i> Share</button>
+        <div class="w-50">
+            <input [(ngModel)]="rating" type="text" [style.width.px]="20" min="1" max="5"> / 5 Sternen
+            <app-star-rating [rating]="rating"></app-star-rating>
+        </div>
+        <div class="w-50 right">
+            <button type="submit" class="btn btn-success red" (click)="addComment()"><i class="fa fa-share"></i> Share</button>
+        </div>
     </div><!-- Status Upload  -->
 </div><!-- Widget Area -->
