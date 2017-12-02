@@ -14,4 +14,9 @@ export class DetailsService {
         .map(res => res.json());
   }
 
+  getIngrediants(idSmoothie) {
+    return this.http.get(api + 'Smoothie/' + idSmoothie + '/Ingrediants')
+        .map(res => res.json());
+  }
+
 }

@@ -4,6 +4,7 @@ var router = express.Router();
 //include models
 var Smoothie = require('../models/Smoothie');
 var Comment = require('../models/Comment');
+var Ingrediant = require('../models/Ingrediant');
 var User = require('../models/User');
 var Order = require('../models/Order');
 
@@ -104,6 +105,18 @@ router.get('/User', function(req, res, next) {
 
 router.put('/User/update', function(req, res, next) {
     User.updateUser(function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
+
+//Ingrediants
+router.get('/Smoothie/:id/Ingrediants', function(req, res, next) {
+    Ingrediant.getIngrediantsOfSmoothie(req.params.id, function(err, rows) {
         if (err) {
             res.json(err);
         } else {

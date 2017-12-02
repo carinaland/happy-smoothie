@@ -11,16 +11,25 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-12 col-sm-4 smoothie-description">
-            <img class="smoothie-img" alt="smoothie"/>
+            <img class="smoothie-img" [src]="smoothie.imageUrl" alt="smoothie"/>
           </div>
           <div class="col-xs-12 col-sm-4 description-details">
             <div class="rating"><app-star-rating [rating]="smoothie.averageRating"></app-star-rating></div>
             <div class="smoothie-description">{{smoothie.description}}</div>
             <div class="price">{{smoothie.price}} €</div>
-            <div class="ingrediants">Banane, Erdbeere</div>
+            <div class="ingrediants" *ngIf='ingrediants'>
+              <div class="ingrediant-container" *ngFor="let ingre of ingrediants">
+                <div class="ingrediant" (click)="showIngrediantDetails(ingre.name)">{{ingre.name}}</div>
+              </div>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-4 ingrediants-details">
-            <div (click)="showIngrediantDetails()">other details about ingredians</div>
+            <div *ngIf='!details'>...click on ingrediant so show details</div>
+            <div *ngIf='details'>
+              <b>What it brings to your health:</b><br/>
+              {{details}}
+            </div>
+
           </div>
         </div>
       </div>
