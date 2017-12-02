@@ -25,5 +25,16 @@ export class TropicalFruitsService {
     return pine;
   }
 
+    agetDetails(ingrediant) {
+
+        const queryParam = "&callback=JSONP_CALLBACK";
+        var apiUrl = 'http://api.tropicalfruitandveg.com/tfvjsonapi.php?tfvitem=';
+        let promise = this.jsonp.get(apiUrl + ingrediant + queryParam)
+            .map((response: any) =>
+                response.json()
+            ).toPromise()
+        return promise;
+    }
+
 }
 
