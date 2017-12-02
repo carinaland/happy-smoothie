@@ -8,22 +8,22 @@ import * as io from 'socket.io-client';
   styleUrls: ['add-comment.component.css']
 })
 export class AddCommentComponent implements OnInit {
-  @Input() idSmoothie;
+  @Input() idSmoothie: number;
 
-  comment = '';
+  comment : string = '';
   rating: number = 5;
 
   private socket;
 
-  url = 'http://localhost:3100';
+  url : string = 'http://localhost:3100';
 
   constructor(private commentService: CommentService) { }
 
-  ngOnInit() {
+  ngOnInit() : void {
     this.socket = io(this.url);
   }
 
-  addComment(){
+  addComment() : void {
     var comment = {
       'idUser': 2,
       'idSmoothie': this.idSmoothie,

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { TropicalFruitsService } from "./tropical-fruits.service";
 import { DetailsService } from "../../../details.service";
+import { Iingrediant } from "../../../Interfaces/Iingrediant"
+import {ISmoothie} from "../../../smoothielist";
 
 @Component({
   selector: 'app-description-section',
@@ -9,35 +11,38 @@ import { DetailsService } from "../../../details.service";
   styleUrls: ['./description-section.component.css']
 })
 export class DescriptionSectionComponent implements OnInit {
-  @Input() smoothie;
+  @Input() smoothie:ISmoothie;
 
   details: string;
 
-  ingrediants: any;
+  ingrediants: Iingrediant[];
 
 
   constructor(private fruitService: TropicalFruitsService, private detailsService: DetailsService) { }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.getIngrediants(this.smoothie.idSmoothie);
   }
 
-  getIngrediants(id){
+  /**
+   * gets all Ingrediants
+   * @param id
+   */
+  getIngrediants(id:number):void{
     this.detailsService.getIngrediants(id).subscribe(ingrediants => {
       this.ingrediants = ingrediants;
+      console.log(this.ingrediants);
     });
   }
 
-  showIngrediantDetails(name){
+  /**
+   * gets Ingrediant details from external api
+   * @param name
+   */
+  showIngrediantDetails(name:string):void{
     this.fruitService.getDetails(name).subscribe(details => {
-      this.details = this.fruitService.details.health;
+      this.details = this.fruitService.health;
     });
   }
-
-  /*showIngrediantDetails(){
-    this.details = this.fruitService.getDetails('pineapple');
-  }*/
-
-
 
 }

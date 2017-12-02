@@ -7,5 +7,7 @@
     </div>
 
     <br/>
-    <app-comments></app-comments>
+    <div *ngIf='product'>
+        <app-comments [passedId]="passedId"></app-comments>
+    </div>
 </div>

@@ -139,6 +139,7 @@ router.get('/Comments', function(req, res, next) {
 
 router.get('/Smoothie/:id/Comments', function(req, res, next) {
     Comment.getCommentsOfSmoothie(req.params.id, function(err, rows) {
+        console.log(rows);
         if (err) {
             res.json(err);
         } else {

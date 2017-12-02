@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from './comment.service';
 import * as io from 'socket.io-client';
+import { Icomment } from '../../../Interfaces/Icomment'
 
 @Component({
   selector: 'app-comments',
@@ -9,17 +10,16 @@ import * as io from 'socket.io-client';
 })
 export class CommentsComponent implements OnInit {
 
-  //todo change to interface
-  commentList: any[];
-  //@Input() idSmoothie;
-  idSmoothie = 1;
-  comment = 'jjj';
+  @Input() passedId:number;
+  commentList: Icomment[];
+  comment:string;
+  url:string = 'http://localhost:3100';
   private socket;
-  url = 'http://localhost:3100';
+
 
   constructor(private commentService: CommentService) { }
 
-  ngOnInit() {
+  ngOnInit() : void {
 
     this.socket = io(this.url);
     this.getComments();
@@ -29,11 +29,13 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  getComments(){
+  /**
+   * get comments onInit
+   */
+  getComments():void {
 
-    this.commentService.getCommentsOfSmoothie(this.idSmoothie).subscribe(comments => {
+    this.commentService.getCommentsOfSmoothie(this.passedId).subscribe(comments => {
       this.commentList = comments;
-      console.log(this.commentList);
     });
   }
 

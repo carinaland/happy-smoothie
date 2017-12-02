@@ -3,7 +3,7 @@ var Comment = {
 
     //CRUD
     getAllComments: function(callback) {
-        return db.query("Select * from comments", callback);
+        return db.query("Select * from comments left join user on comments.idUser = user.iduser", callback);
     },
     getCommentsOfSmoothie: function(smoothieId, callback) {
         return db.query("Select * from comments left join user on comments.idUser = user.iduser where idSmoothie=?", [smoothieId], callback);
