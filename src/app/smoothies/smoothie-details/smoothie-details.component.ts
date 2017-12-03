@@ -16,14 +16,14 @@ export class SmoothieDetailsComponent implements OnInit {
 
   constructor(private detailsService: DetailsService, private activatedRoute: ActivatedRoute) { }
 
+  ngOnInit():void {
 
-
-  ngOnInit() {
-    //get id from route
+    //get id from url
     this.activatedRoute.params.subscribe(params => {
       this.passedId = params['id'].slice(1);
     });
 
+    //get smoothie details
     this.detailsService.getSmoothie(this.passedId).subscribe(product => {
       this.product = product[0];
     });

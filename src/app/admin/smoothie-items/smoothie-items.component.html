@@ -17,37 +17,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let sInfo of Data  let i = index">
+      <tr *ngFor="let sInfo of smoothies let i = index">
         <td> <img [src]='sInfo.imageUrl' [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'></td>
-        <td #name>{{sInfo.smoothieName }}</td>
+        <td #name>{{sInfo.name }}</td>
         <td #price>{{sInfo.price | currency: "EUR" :true:"1.2-2"}}</td>
-        <td #ingredients>{{sInfo.ingreName }}</td>
+        <td #ingredients>
+          <div *ngFor="let ingre of sInfo.ingrediants">
+            {{ingre.name}}
+          </div>
+        </td>
         <td #description>{{sInfo.description}}</td>
         <td><button (click)="edit=!edit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
           <button id="delbtn" (click)="deleteSmoothie(sInfo.idSmoothie)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
     </tbody>
   </table>
-
-  <!--
-  <div *ngIf="edit">
-    <div *ngFor="let sInfo of Data" class="ui input focus">
-      <input type="text" size="7" #editimage value="{{sInfo.imageUrl}}">
-      <input type="text" size="7" #editname value="{{sInfo.smoothieName}}">
-      <input type="text" size="7" #editPrice value=" {{sInfo.price}}">
-      <input type="text" size="7" #editIngre value="{{sInfo.ingreName}}">
-      <input type="text" size="7" #editDes value=" {{sInfo.description}} ">
-    </div>
-
-    <div class="ui buttons right floated">
-        <button (click)="updateSmoothie()" type="button" class="btn btn-sm btn-info">
-      <span class="glyphicon glyphicon-ok-sign"></span> Save
-    </button>
-        <div class="or"></div>
-        <button (click)="Close()" class="btn btn-sm btn-warning">Close</button>
-      </div>
-    </div>
-  </div> -->
 
   <div *ngIf="edit" class='panel panel-primary'>
     <div class="panel-body">

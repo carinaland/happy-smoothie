@@ -34,6 +34,29 @@ router.get('/Smoothies', function(req, res, next) {
         if (err) {
             res.json(err);
         } else {
+            var arr = [];
+            rows.forEach(function(element){
+                Ingrediant.getIngrediantsOfSmoothie(element.idSmoothie, function(err, row) {
+                    if (err) {
+                        res.json(err);
+                    } else {
+                        element['ingrediants'] = row;
+                        arr.push(element);
+                         if(arr.length  === rows.length) {
+                            res.json(arr);
+                         }
+                    }
+                });
+            })
+        }
+    });
+});
+
+router.get('/Smoothies', function(req, res, next) {
+    Smoothie.getAllSmoothies(function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
             res.json(rows);
         }
     });

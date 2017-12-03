@@ -3,7 +3,7 @@ var Smoothie = {
 
     //CRUD
     getAllSmoothies: function (callback) {
-        return db.query("select smoothies.idSmoothie,  smoothies.name as smoothieName, price, imageUrl, smoothies.description, c.name as ingreName from smoothies left join smoothieIngrediants on smoothies.idSmoothie = smoothieIngrediants.idSmoothie left join Smoothies.ingrediants as c on smoothieIngrediants.idIngrediant = c.idIngrediants  ", callback);
+        return db.query("select * from smoothies", callback);
     },
     getSmoothieById: function (id, callback) {
         return db.query("select * from smoothies where idSmoothie=?", [id], callback);

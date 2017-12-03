@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { SmoothieService } from '../../admin/smoothie.service';
-import { Http, Response } from '@angular/http';
 import { ISmoothie } from 'app/smoothielist';
+import {DetailsService} from "../../details.service";
+import {Iingrediant} from "../../Interfaces/Iingrediant";
 
 @Component({
   selector: 'app-smoothie-items',
   templateUrl: './smoothie-items.component.html',
   styleUrls: ['./smoothie-items.component.css']
 })
+
 export class SmoothieItemsComponent implements OnInit {
   imageWidth: number = 40;
   imageHeight: number = 40;
@@ -17,13 +19,17 @@ export class SmoothieItemsComponent implements OnInit {
   showAdd:boolean = false;
   Data: ISmoothie;
   smoothie: ISmoothie[];
+  ingrediants: Iingrediant;
+  smoothies: any;
+  groß = 'hallo';
 
-  constructor(private _smoothieService: SmoothieService){
+  constructor(private _smoothieService: SmoothieService, private _detailsService: DetailsService){
    }  
 
   getDatabaseData() {
-    this._smoothieService.getData().subscribe(
-      data => this.Data = data);
+    this._smoothieService.getData().subscribe(smoothies => {
+      this.smoothies = smoothies;
+    });
   }
 
   updateSmoothie(editimage: HTMLInputElement,editname: HTMLInputElement, editPrice: HTMLInputElement, editIngre: HTMLInputElement, editDes: HTMLInputElement): boolean {
@@ -42,39 +48,11 @@ export class SmoothieItemsComponent implements OnInit {
     return false;
   }
 
-  /*
-  RemoveSmoothie(i) {
-    this.smoothie.splice(i, 1);
-  }*/
   deleteSmoothie(i) {
     this._smoothieService.deleteSmoothie(i)
     console.log(i);
-  //  this.smoothie.splice(index, 1);
-   // this.Data.remove(this.Data.findIndex((message => message._id === val)));
    }
-/*
-  RemoveSmoothie(val) {
-     this._smoothieService.delete({id: val})
-    .then((data)=>{
-         this.Data.remove(this.Data.findIndex((message => message._id === val)));
-      });
-    } */
-  /*
 
-  updateSmoothie() {
-    this.smoothie.updateSmoothie(1, this.Data).subscribe(()=>{
-      console.log(this.Data);
-    })
-  }; */
-
-  /*
-  getDatabaseData(){
-    this._smoothieService.getData(1).subscribe(
-      data => {
-      this.Data = data[0];
-      console.log(this.Data);
-    }); 
-  } */
 
   ngOnInit() {
     this.getDatabaseData();

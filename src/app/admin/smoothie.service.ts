@@ -17,6 +17,13 @@ export class SmoothieService {
       .map((res:Response) => res.json());
   }
 
+  getIngrediants(idSmoothie) {
+    return this.http.get('http://localhost:3100/api/Smoothie/' + idSmoothie + '/Ingrediants')
+        .map(res => res.json()).toPromise();
+  }
+
+
+
   updateSmoothie(smoothie) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
