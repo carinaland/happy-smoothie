@@ -1,7 +1,6 @@
 <div class="container">
   <hr>
   <button (click)="showAddForm()" *ngIf="!showAdd" type="button" class="btn btn-info btn-lg pull-right">Add Smoothie</button>
-
   <h3>List of all Smoothies</h3>
   <span class="clearfix"></span>
   <hr>
@@ -40,7 +39,7 @@
           <div class="container">
             <form class="form-horizontal">
               <h3>Add Smoothie</h3>
-              <div *ngFor="let sInfo of Data">
+              <div *ngFor="let sInfo of smoothies">
                 <div class="form-group">
                   <label class="control-label col-sm-2">Image:</label>
                   <div class="col-sm-3">
@@ -50,7 +49,7 @@
                 <div class="form-group">
                   <label class="control-label col-sm-2">Name:</label>
                   <div class="col-sm-3">
-                    <input type="text" #editname value="{{sInfo.smoothieName}}" class="form-control">
+                    <input type="text" #editname value="{{sInfo.name}}" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
@@ -61,45 +60,40 @@
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2">Ingredients:</label>
-                  <div class="col-sm-3">
-                    <input type="text" #editIngre value="{{sInfo.ingreName}}" class="form-control" placeholder="Enter ingredient">
+                  <div *ngFor="let ingre of sInfo.ingrediants" class="col-sm-2">
+                    <input type="text" #editIngre value="{{ingre.name}}" class="form-control" placeholder="Enter ingredient">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2">Description:</label>
                   <div class="col-sm-4">
-                    <textarea #editDes value="{{sInfo.description}}" class="form-control" rows="5" id="comment"></textarea>       
+                    <textarea #editDes value="{{sInfo.description}}" class="form-control" rows="5" id="comment"></textarea>
                   </div>
+                </div>
+                <div class="ui buttons">
+                  <button (click)="updateSmoothie(editimage, editname, editPrice, editIngre ,editDes )" type="button" class="btn btn-sm btn-info">
+                <span class="glyphicon glyphicon-ok-sign"></span> Save
+              </button>
+                  <div class="or"></div>
+                  <button (click)="Close()" class="btn btn-sm btn-warning">Close</button>
                 </div>
               </div>
             </form>
-
-            <div class="ui buttons">
-                <button (click)="updateSmoothie(editimage, editname, editPrice, editIngre ,editDes )" type="button" class="btn btn-sm btn-info">
-              <span class="glyphicon glyphicon-ok-sign"></span> Save
-            </button>
-                <div class="or"></div>
-                <button (click)="Close()" class="btn btn-sm btn-warning">Close</button>
-              </div>
-            </div>
-
-
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<hr>
 
-  <hr>
-
-  <div *ngIf="showAdd" class='panel panel-primary'>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-12">
-          <app-add-smoothie></app-add-smoothie>
-        </div>
+<div *ngIf="showAdd" class='panel panel-primary'>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <app-add-smoothie></app-add-smoothie>
       </div>
     </div>
   </div>
-
+</div>

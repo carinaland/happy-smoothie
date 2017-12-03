@@ -45,7 +45,7 @@ var Smoothie = {
         console.log("ssssmm: " + smoothies.idSmoothie);
         qbq = db.query("update smoothies set name=? ,price=?, description=?, ImageUrl, where idSmoothie=?",
             [smoothies.name, smoothies.price, smoothies.description,
-            smoothies.ImageUrl, smoothies.idSmoothie], callback);
+            smoothies.ImageUrl, smoothies.idSmoothie], function(err, result)
         {
             if (!err) {
                 console.log('Successfully updated Smoothie.');
@@ -53,7 +53,7 @@ var Smoothie = {
                 console.log(result);
                 console.log('Was not able to update Smoothie to database.');
             }
-        };
+        });
         console.log(qbq);
         return qbq;
     },

@@ -22,8 +22,18 @@ export class SmoothieService {
         .map(res => res.json()).toPromise();
   }
 
+  addSmoothie(smoothie){
+    console.log('Check add smoothie service!!!!!!');
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
-
+    var data = JSON.stringify(smoothie);
+    console.log(data);
+    console.log('getting there!!!!!!');
+    return this.http.post('http://localhost:3100/api/Smoothies/Add', data, {headers: headers})
+        .map(res => res.json()); 
+  }
+  
   updateSmoothie(smoothie) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');

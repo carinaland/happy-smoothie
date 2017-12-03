@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
-import { SmoothieService } from './admin/smoothie.service';
-import { AddSmothieService } from './admin/add-smothie.service';
-
 import { JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -42,6 +39,7 @@ import { DetailsService } from 'app/details.service';
 import { CommentService } from 'app/smoothies/smoothie-details/comments/comment.service';
 import { CartService } from 'app/cart/cart-service';
 import { TropicalFruitsService} from 'app/smoothies/smoothie-details/description-section/tropical-fruits.service';
+import { SmoothieService } from './providers/smoothie.service';
 
 import { CommentsComponent } from './smoothies/smoothie-details/comments/comments.component';
 import { CommentComponent } from './smoothies/smoothie-details/comments/comment/comment.component';
@@ -148,7 +146,6 @@ export const firebaseConfig = {
     AuthService, 
     AngularFireAuth,
     SmoothieService, 
-    AddSmothieService, 
     OrderService, 
     OrdersmoothieService,
     UserService, 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SmoothieService } from '../../admin/smoothie.service';
+import { SmoothieService } from 'app/providers/smoothie.service';
 import { ISmoothie } from 'app/smoothielist';
-import {DetailsService} from "../../details.service";
-import {Iingrediant} from "../../Interfaces/Iingrediant";
+import { DetailsService } from "../../details.service";
+import { Iingrediant } from "../../Interfaces/Iingrediant";
 
 @Component({
   selector: 'app-smoothie-items',
@@ -16,15 +16,15 @@ export class SmoothieItemsComponent implements OnInit {
   imageMargin: number = 12;
 
   edit = false;
-  showAdd:boolean = false;
+  showAdd: boolean = false;
   Data: ISmoothie;
   smoothie: ISmoothie[];
   ingrediants: Iingrediant;
   smoothies: any;
   groß = 'hallo';
 
-  constructor(private _smoothieService: SmoothieService, private _detailsService: DetailsService){
-   }  
+  constructor(private _smoothieService: SmoothieService, private _detailsService: DetailsService) {
+  }
 
   getDatabaseData() {
     this._smoothieService.getData().subscribe(smoothies => {
@@ -32,14 +32,14 @@ export class SmoothieItemsComponent implements OnInit {
     });
   }
 
-  updateSmoothie(editimage: HTMLInputElement,editname: HTMLInputElement, editPrice: HTMLInputElement, editIngre: HTMLInputElement, editDes: HTMLInputElement): boolean {
+  updateSmoothie(editimage, editname, editPrice, editIngre, editDes) {
     console.log(` Image: ${editimage.value}, Name: ${editname.value} Price: ${editPrice.value} Ingredient: ${editIngre.value} Description: ${editDes.value} `);
     var smoothie = {
-     // 'idSmoothie': this.idSmoothie,
-       'name': editname.value,
-       'price': editPrice.value,
-       'description':editDes.value,
-       'imageUrl': editimage.value
+      // 'idSmoothie': this.idSmoothie,
+      'name': editname.value,
+      'price': editPrice.value,
+      'description': editDes.value,
+      'imageUrl': editimage.value
     };
     this._smoothieService.updateSmoothie(smoothie).subscribe(res => {
       var res = res;
@@ -51,14 +51,14 @@ export class SmoothieItemsComponent implements OnInit {
   deleteSmoothie(i) {
     this._smoothieService.deleteSmoothie(i)
     console.log(i);
-   }
+  }
 
 
   ngOnInit() {
     this.getDatabaseData();
   }
 
-  showAddForm(){ 
+  showAddForm() {
     this.showAdd = true;
   }
   Close() {
