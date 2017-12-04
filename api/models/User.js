@@ -8,6 +8,20 @@ var User = {
     getUserById: function(id, callback) {
         return db.query("select * from user where idUser=?", [id], callback);
     },
+
+    addUser: function(User, callback) {
+        console.log("check model order.iduser:  " + User.email);
+        qbq = db.query("Insert into Smoothies.user values(?,?,?,?,?,?,?)", [0, User.name, User.email, User.street, User.city, User.county, User.eircode], function(err, result) {
+            if (!err) {
+                console.log('Successfully added information.');
+            } else {
+                console.log(result);
+                console.log('Was not able to add information to database.');
+            }
+        });
+        console.log(qbq);
+        return qbq;
+    },
    
     updateUser: function(User, Task, callback) {
         console.log("models: " + User.iduser)

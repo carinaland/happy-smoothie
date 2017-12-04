@@ -10,7 +10,10 @@ export class OrdersmoothieService {
     constructor(private http: Http) { }
 
     addSmoothieOrder(smoothieorder) {
-        console.log("check service");
+        console.log("check service" + smoothieorder.idSmoothie);
+        console.log("check service" + smoothieorder.lastlastOderID);
+        console.log("check service" + smoothieorder.quantity);
+       
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         var data = JSON.stringify(smoothieorder);

@@ -6,6 +6,7 @@ var Smoothie = require('../models/Smoothie');
 var Comment = require('../models/Comment');
 var User = require('../models/User');
 var Order = require('../models/Order');
+var Smoothieorders = require('../models/Smoothieorders');
 
 // Smoothie by id
 router.get('/Smoothie/:id', function(req, res, next) {
@@ -112,6 +113,25 @@ router.put('/User/update', function(req, res, next) {
     });
 });
 
+router.post('/User/Add', function(req, res, next) {
+    console.log("req.body" + req.body);
+    var user = {
+        'name': req.body.name,
+        'email': req.body.email,
+        'street': req.body.street,
+        'city': req.body.city,
+        'county': req.body.county,
+        'eircode': req.body.eircode,
+    }
+    User.addUser(user, function(err, rows) {
+        if (err) {
+           res.json(err);
+        } else {
+           res.json(rows);
+        }
+   });
+});
+
 router.put('/User/Update/:id', function(req, res, next) {
     console.log('work');
     console.log("user api check");
@@ -186,6 +206,8 @@ router.post('/Comment/add', function(req, res, next) {
 //Order
 router.post('/Order/add', function(req, res, next) {
     console.log("req.body" + req.body);
+    var idSmoothie = req.body.idSmoothie;
+    var quantity = req.body.quantity;
     var order = {
         'idUser': req.body.idUser,
         'date': req.body.date,
@@ -194,26 +216,34 @@ router.post('/Order/add', function(req, res, next) {
         if (err) {
            res.json(err);
         } else {
-           res.json(rows);
+            Order.getLastOrderID(function(err, rows) {
+                if (err) {
+                    res.json(err);
+                } else {
+                    console.log(rows);
+                    var smoothieorder = {
+                        'idSmoothie': idSmoothie,
+                        'idOrder':rows.idOrder,
+                        'quantity' : quantity
+                    }
+                    Smoothieorders.addSmoothieOrder(smoothieorder, function(err, rows) {
+                        if (err) {
+                           res.json(err);
+                        } else {
+                           res.json(rows);
+                        }
+                   });
+                    //res.json(rows);
+                }
+            });
+           //res.json(rows);
         }
    });
 });
 
 
 router.get('/Order', function(req, res, next) {
-    Order.getAllOrders(function(err, rows) {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json(rows);
-        }
-    });
-});
-
-
-//SmoothieOrders - link table 
-router.get('/SmoothieOrders', function(req, res, next) {
-    Smoothieorders.getAllSmoothieOrders(function(err, rows) {
+    Order.getLastOrderID(function(err, rows) {
         if (err) {
             res.json(err);
         } else {
@@ -224,11 +254,15 @@ router.get('/SmoothieOrders', function(req, res, next) {
 
 //SmoothieOrders - link table 
 router.post('/SmoothieOrders/add', function(req, res, next) {
+    console.log("req.body" + req.body);
     var smoothieorder = {
         'idSmoothie': req.body.idSmoothie,
+        'idOrder':req.body.idOrder,
         'quantity' : req.body.quantity
     }
     console.log("check api"  + smoothieorder.idSmoothie);
+    console.log("check api"  + smoothieorder.idOrder);
+    console.log("check api"  + smoothieorder.quantity);
     Smoothieorders.addSmoothieOrder(smoothieorder, function(err, rows) {
         if (err) {
            res.json(err);

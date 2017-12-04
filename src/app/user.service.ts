@@ -14,10 +14,15 @@ export class UserService {
       .map((res) => res.json())
   }
 
-  /*updateUser(id : number, user: IUser) : Observable<IUser> {
-    return this.http.put(this.apiUrl + `/update`+ `/${id}`, user)
-      .map((res) => res.json())
-  }*/
+  addUser(user){
+    console.log(user)
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    var data = JSON.stringify(user);
+    console.log(data);
+    return this.http.post(this.apiUrl + '/Add', data, {headers: headers})
+        .map(res => res.json());
+  }
 
   updateUser(user) {
     var headers = new Headers();

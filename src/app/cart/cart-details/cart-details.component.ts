@@ -43,6 +43,7 @@ export class CartDetailsComponent implements OnInit {
 
     for (var i = 0; i < this.selectedSmoothies.length; i++) {
       this.objSmoothie = this.selectedSmoothies[i];
+      // console.log("objSmoothie" + this.objSmoothie);
       this.objSmoothieArray.push(this.objSmoothie);
       //console.log("objSmoothieArray.id" + this.objSmoothie.id);
      // console.log("objSmoothieArray.quantity" + this.objSmoothie.quantity);

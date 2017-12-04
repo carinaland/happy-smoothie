@@ -13,7 +13,12 @@ import { OrdersmoothieService } from './ordersmoothie.service';
 export class CartComponent implements OnInit {
   smoothies: ISmoothie[];
   showAdd: boolean = false;
-  lastOrderId: number;
+  lastOrderId = [];
+  OrderID: any;
+  OrderIDArray = [];
+  lastlastOderID: any;
+  addOrderVar: any;
+
   constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService) { }
 
   ngOnInit() {
@@ -28,37 +33,55 @@ export class CartComponent implements OnInit {
   addOrder() {
     console.log("ok");
     var order = {
-      "idUser": 5000,
+      "idUser": 2222,
       "date": new Date()
     }
-    console.log(order);
+    console.log("addOrder" + order);
 
     this.orderService.addOrder(order).subscribe(res => {
       var res = res;
-      console.log(res);
-    });
+      //this.addOrderVar = res;
+      console.log("orderplaced");
+
+    })
   }
 
-  getLastOrderId() {
-    this.lastOrderId
-  };
+  /*getLastOrderId() {
+    console.log("get last order");
+    this.orderService.getLastOrderID().then((returedOrderID) => {
+      this.lastOrderId = returedOrderID;
+      for (var i = 0; i < this.lastOrderId.length; i++) {
+        this.OrderID = this.lastOrderId[i];
+        console.log("OrderID" + this.OrderID);
+        this.OrderIDArray.push(this.OrderID.idOrder)
+        for (var i = 0; i < this.OrderIDArray.length; i++) {
+          this.lastlastOderID = this.OrderIDArray[i];
+          console.log("lastlastOderID" + this.lastlastOderID);
+        }
+      }
+    }).then((res)=> this.addSmoothieOrder())
+  }
 
   addSmoothieOrder() {
     console.log("check addSmoothieOrder");
     var smoothieorder = {
-      "idSmoothie": 100,
-      "quantity": 200
+      "idSmoothie": 2222,
+      "idOrder": this.lastlastOderID,
+      "quantity": 2222
     }
     this.ordersmoothieService.addSmoothieOrder(smoothieorder).subscribe(res => {
       var res = res;
-      console.log("check addSmoothieOrder 2");
+      console.log("check addSmoothieOrder");
     });
-  }
-
-
-  /*addTotalOrder(){
-    this.addOrder();
-    this.addSmoothieOrder();
   }*/
+
+  addTotalOrder() {
+    this.addOrder();
+    //this.getLastOrderId();
+    /*setTimeout(function(){
+      this.getLastOrderId.emit('lastOrderID', this.getLastOrderId());
+    }, 5000);*/
+    //this.addSmoothieOrder();
+  }
 
 }

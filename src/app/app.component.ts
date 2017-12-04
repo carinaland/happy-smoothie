@@ -14,7 +14,7 @@ import { AuthUserService } from 'app/providers/auth-user.service';
 })
 export class AppComponent { 
   title = 'app';
-  private isLoggedIn: Boolean;
+public isLoggedIn: Boolean;
   private user_displayName: String;
   private user_email: String;
 

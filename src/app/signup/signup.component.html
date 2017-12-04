@@ -8,7 +8,7 @@
   <mat-card-content>
       <form>
           <mat-input-container>
-              <input [(ngModel)]="email" name="email" matInput placeholder="email" type="email">
+              <input #email name="email" matInput placeholder="email" type="email">
           </mat-input-container>
           <mat-input-container>
               <input [(ngModel)]="pwd" name="password" matInput placeholder="password" type="password">
@@ -24,7 +24,7 @@
           <br>
      
         <!--  <button (click)="register()" class="btn btn-sm btn-warning">Register</button> -->
-        <button (click)="register()" mat-raised-button color="primary">Register</button>
+        <button (click)="addUser(email)" mat-raised-button color="primary">Register</button>
       </form>
   </mat-card-content>
 </mat-card>

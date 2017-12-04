@@ -4,6 +4,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuth } from 'angularfire2/auth';
 import { NotificationService } from '../providers/notification.service';
 import { AuthUserService } from '../providers/auth-user.service';
+import { UserService } from 'app/user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
   name: string;
   description: string;
 
-  constructor(private auth: AuthUserService) { }
+  constructor(private auth: AuthUserService, private userService : UserService ) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,25 @@ export class SignupComponent implements OnInit {
     console.log(this.email);
     console.log(this.pwd);
     // this.authService.registerUser(this.registerData)
+  }
+
+
+  addUser(email) {
+    console.log("ok");
+    var user = {
+      name: "",
+      street: "",
+      city: "",
+      county: "",
+      eircode: "",
+      email: email.value,
+    }
+    console.log(user);
+
+    this.userService.addUser(user).subscribe(res => {
+      var res = res;
+      console.log(res);
+    });
   }
 }
 

@@ -16,8 +16,12 @@ var Order = {
             return qbq;
         },
 
-    getAllOrders: function (callback) {
+    /*getAllOrders: function (callback) {
         return db.query("Select * from smoothies.order", callback);
+    },*/
+
+    getLastOrderID: function (callback) {
+        idOrder = db.query("Select idOrder from Smoothies.order order by idOrder desc limit 1", (callback));
     },
 
     /*getLastOrderId: function (callback) {

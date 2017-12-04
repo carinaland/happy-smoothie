@@ -26,7 +26,7 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   loadPersonalDetails() : void {
-    this.userService.getUser(2).subscribe((returnedUser) =>{
+    this.userService.getUser(5).subscribe((returnedUser) =>{
       this.user = returnedUser; 
 
       })
@@ -39,7 +39,7 @@ export class PersonalDetailsComponent implements OnInit {
   updateUser(name, street, city, county, eircode, email,) {
     
     var user = { 
-      iduser: " 2",
+      iduser: "5",
       name: name.value,
       street: street.value,
       city: city.value,
