@@ -13,8 +13,8 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
-    "@angular/cdk": "^2.0.0-beta.12",
     "@angular/animations": "^4.0.0",
+    "@angular/cdk": "^2.0.0-beta.12",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angularfire": "^2.3.0",
+    "angularfire2": "^5.0.0-rc.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-alpha.6",
     "connect-multiparty": "^2.1.0",

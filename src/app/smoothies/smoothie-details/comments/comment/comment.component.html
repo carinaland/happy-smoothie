@@ -1,6 +1,11 @@
 <div class="comment-box">
-  {{idComment}}
-  {{idUser}}
-  {{date}}
-  {{content}}
+  <div class="comment-info">
+    <b>{{idUser}}</b><br/>
+    {{date | date: 'dd/MM/yyyy'}}<br/>
+    <app-star-rating [rating]="rating"></app-star-rating>
+  </div>
+  <div class="comment-content">
+    {{content}}
+  </div>
+
 </div>

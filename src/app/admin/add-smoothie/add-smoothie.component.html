@@ -1,49 +1,39 @@
-
 <div class="container">
-  <form  class="form-horizontal">
-      <h3>Add Smoothie</h3>
-      <div class="form-group">
-        <label class="control-label col-sm-2" >ID:</label>
-        <div class="col-sm-3">
-          <input type="text" #newid class="form-control" placeholder="Enter ID">
-        </div>
+  <form class="form-horizontal">
+    <h3>Add Smoothie</h3>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Image:</label>
+      <div class="col-sm-3">
+        <input type="text" #newimage class="form-control" placeholder="Enter image URL">
       </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" >Image:</label>
-          <div class="col-sm-3">
-            <input type="text" #newimage class="form-control" placeholder="Enter image URL">
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Name:</label>
-            <div class="col-sm-3">
-              <input type="text" #newname class="form-control" placeholder="Enter Name">
-            </div>
-          </div>
-          <div class="form-group">
-              <label class="control-label col-sm-2" >Price:</label>
-              <div class="col-sm-3">
-                <input type="text" #newprice class="form-control" placeholder="Enter Price">
-              </div>
-            </div>
-          <div class="form-group">
-              <label class="control-label col-sm-2" >Ingredients:</label>
-              <div class="col-sm-3">
-                <input type="text" #newingredients class="form-control" placeholder="Enter ingredient">
-              </div>
-            </div>     
-            <div class="form-group">
-                <label class="control-label col-sm-2" >Description:</label>
-                <div class="col-sm-4">
-                    <textarea #newdescription class="form-control" rows="5" id="comment"></textarea>   </div>
-              </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" (click)="addSmoothie(newid, newimage, newname, newprice, newingredients, newdescription)" class="btn btn-success  btn-lg pull-right">Add smoothie db</button>
-          </div>
-        </div>
-      </form>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Name:</label>
+      <div class="col-sm-3">
+        <input type="text" #newname class="form-control" placeholder="Enter Name">
       </div>
-  
-  
-<!--(click)="addSmoothie(newid, newimage,newname, newprice, newingredients, newdescription)"-->
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Price:</label>
+      <div class="col-sm-3">
+        <input type="text" #newprice class="form-control" placeholder="Enter Price">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Ingredients:</label>
+      <div class="col-sm-3">
+        <input type="text" #newingredients class="form-control" placeholder="Enter ingredient">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Description:</label>
+      <div class="col-sm-4">
+        <textarea #newdescription class="form-control" rows="5" id="comment"></textarea> </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" (click)="addSmoothie(newimage, newname, newprice, newingredients, newdescription)" class="btn btn-success">Add smoothie db</button>
+      </div>
+    </div>
+  </form>
+</div>

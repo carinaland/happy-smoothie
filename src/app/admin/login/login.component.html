@@ -1,8 +1,7 @@
-
 <div class="container">
-      <div *ngIf="!isLoggedIn">
-        <p class="navbar-text navbar-right">Logged Out</p>
-      </div>
+  <div *ngIf="!isLoggedIn">
+    <p class="navbar-text navbar-right">Logged Out</p>
+  </div>
   <div>
     <h2>Login To Your Account</h2>
     <button class="btn btn-sm btn-warning" (click)="login()">Login With Google</button>

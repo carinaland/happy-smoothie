@@ -4,6 +4,7 @@ var router = express.Router();
 //include models
 var Smoothie = require('../models/Smoothie');
 var Comment = require('../models/Comment');
+var Ingrediant = require('../models/Ingrediant');
 var User = require('../models/User');
 var Order = require('../models/Order');
 var Smoothieorders = require('../models/Smoothieorders');
@@ -26,6 +27,29 @@ router.get('/Cart/:id', function(req, res, next) {
          } else {
             res.json(rows);
          }
+    });
+});
+
+router.get('/Smoothies', function(req, res, next) {
+    Smoothie.getAllSmoothies(function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            var arr = [];
+            rows.forEach(function(element){
+                Ingrediant.getIngrediantsOfSmoothie(element.idSmoothie, function(err, row) {
+                    if (err) {
+                        res.json(err);
+                    } else {
+                        element['ingrediants'] = row;
+                        arr.push(element);
+                         if(arr.length  === rows.length) {
+                            res.json(arr);
+                         }
+                    }
+                });
+            })
+        }
     });
 });
 
@@ -57,8 +81,8 @@ router.post('/Smoothies/Add', function(req, res, next) {
         'name': req.body.name,
         'price': req.body.price,
         'description': req.body.description,
-        'imageUrl': req.body.imageUrl
-      //  'averageRating':req.body.averageRating,
+        'imageUrl': req.body.imageUrl,
+      'averageRating':req.body.averageRating,
     }
     Smoothie.addSmoothie(smoothie, function(err, rows) {
         if (err) {
@@ -70,16 +94,25 @@ router.post('/Smoothies/Add', function(req, res, next) {
 });
 
 //update smoothie
-router.put('/Smoothies/update', function(req, res, next) {
-    Smoothie.updateSmoothie(function(err, rows) {
+router.put('/Smoothies/update/:id', function(req, res, next) {
+    console.log('api Update Smoothie');
+    console.log(req.body);
+    var smoothie = {
+        'idSmoothie': req.body.idSmoothie,
+        'name': req.body.name,
+        'price': req.body.price,
+        'description': req.body.description,
+        'imageUrl': req.body.imageUrl,
+      'averageRating':req.body.averageRating,
+    }
+    Smoothie.addSmoothie(smoothie, function(err, rows) {
         if (err) {
-            res.json(err);
+           res.json(err);
         } else {
-            res.json(rows);
+           res.json(rows);
         }
-    });
+   });
 });
-
 
 
 //User
@@ -165,6 +198,17 @@ router.put('/User/Update/:id', function(req, res, next) {
     });
 });
 
+//Ingrediants
+router.get('/Smoothie/:id/Ingrediants', function(req, res, next) {
+    Ingrediant.getIngrediantsOfSmoothie(req.params.id, function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
 
 //Comments
 router.get('/Comments', function(req, res, next) {
@@ -179,6 +223,7 @@ router.get('/Comments', function(req, res, next) {
 
 router.get('/Smoothie/:id/Comments', function(req, res, next) {
     Comment.getCommentsOfSmoothie(req.params.id, function(err, rows) {
+        console.log(rows);
         if (err) {
             res.json(err);
         } else {
@@ -198,12 +243,14 @@ router.get('/Comment/:id', function(req, res, next) {
 });
 
 router.post('/Comment/add', function(req, res, next) {
+    var date = Date.now();
+    console.log(date);
     var comment = {
         'idUser': req.body.idUser,
         'idSmoothie': req.body.idSmoothie,
         'content': req.body.content,
-        'date': Date.now,
-        'rating': req.body.rating
+        'rating': req.body.rating,
+        'date': date,
     }
     Comment.addComment(comment, function(err, rows) {
         if (err) {

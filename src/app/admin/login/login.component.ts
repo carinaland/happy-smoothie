@@ -18,25 +18,25 @@ export class LoginComponent implements OnInit {
   constructor(public authService: AuthService,
     private router: Router, public afAuth: AngularFireAuth) {
     this.afAuth.auth.onAuthStateChanged((user) => {
-      if (user == null) {     
-       console.log("Logged out");
-       this.user_displayName = '';
-       this.user_email ='';     
+      if (user == null) {
+        console.log("Logged out");
+        this.user_displayName = '';
+        this.user_email = '';
       }
 
     });
   }
 
- 
-    ngOnInit() {
-    }
-  
-    login() {
-      this.authService.loginWithGoogle().then((data) => {
-        this.router.navigate(['admin']);
-      })
-  
-  
+
+  ngOnInit() {
+  }
+
+  login() {
+    this.authService.loginWithGoogle().then((data) => {
+      this.router.navigate(['admin']);
+    })
+
+
   }
 
 }

@@ -32,15 +32,11 @@ app.get('*', function(req, res){
 //SOKET
 
 io.on('connection', function(socket){
-    console.log('a user is connected');
     socket.on('add-comment', function (comment) {
-        console.log('LOGBLOG');
-        io.sockets.emit('new-comment', comment);
+        setTimeout(() => io.sockets.emit('new-comment', comment), 250);
     });
 });
 
 server.listen(port);
-
-
 
 console.log('product list RESTful API server startet on: ' + port);
