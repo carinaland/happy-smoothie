@@ -3,6 +3,7 @@ import { ISmoothie } from 'app/smoothies/smoothie-list/smoothies';
 import { Http, RequestMethod, Headers } from "@angular/http";
 import { OrderService } from 'app/order.service';
 import { OrdersmoothieService } from './ordersmoothie.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { OrdersmoothieService } from './ordersmoothie.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  public selectedSmoothies = [];
   smoothies: ISmoothie[];
   showAdd: boolean = false;
   lastOrderId = [];
@@ -18,8 +20,10 @@ export class CartComponent implements OnInit {
   OrderIDArray = [];
   lastlastOderID: any;
   addOrderVar: any;
+  objSmoothie: any;
+  objSmoothieArray = [];
 
-  constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService) { }
+  constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService, private cookieService: CookieService) { }
 
   ngOnInit() {
 
@@ -31,6 +35,7 @@ export class CartComponent implements OnInit {
 
 
   addOrder() {
+    //insert order into order table
     console.log("ok");
     var order = {
       "idUser": 2222,
@@ -46,9 +51,10 @@ export class CartComponent implements OnInit {
     })
   }
 
-  /*getLastOrderId() {
+  getLastOrderId() {
+    //getting the last orderID
     console.log("get last order");
-    this.orderService.getLastOrderID().then((returedOrderID) => {
+    this.orderService.getLastOrderID().subscribe((returedOrderID) => {
       this.lastOrderId = returedOrderID;
       for (var i = 0; i < this.lastOrderId.length; i++) {
         this.OrderID = this.lastOrderId[i];
@@ -59,29 +65,44 @@ export class CartComponent implements OnInit {
           console.log("lastlastOderID" + this.lastlastOderID);
         }
       }
-    }).then((res)=> this.addSmoothieOrder())
+    })
   }
 
   addSmoothieOrder() {
-    console.log("check addSmoothieOrder");
-    var smoothieorder = {
-      "idSmoothie": 2222,
-      "idOrder": this.lastlastOderID,
-      "quantity": 2222
+    //getting smoothieID and quantity from cookie
+    this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
+    console.log("selectedSmoothies" + this.selectedSmoothies);
+    for (var i = 0; i < this.selectedSmoothies.length; i++) {
+      this.objSmoothie = this.selectedSmoothies[i];
+      this.objSmoothieArray.push(this.objSmoothie);
     }
-    this.ordersmoothieService.addSmoothieOrder(smoothieorder).subscribe(res => {
-      var res = res;
+    //insert smoothieID and quantity into smoothieOrders table with the last orderID
+    for (var i = 0; i < this.objSmoothieArray.length; i++) {
       console.log("check addSmoothieOrder");
-    });
-  }*/
+      var smoothieorder = {
+        "idSmoothie": this.objSmoothieArray[i].id,
+        "idOrder": this.lastlastOderID,
+        "quantity": this.objSmoothieArray[i].quantity
+      }
+      this.ordersmoothieService.addSmoothieOrder(smoothieorder).subscribe(res => {
+        var res = res;
+        console.log("check addSmoothieOrder");
+      });
+    }
+  }
+
 
   addTotalOrder() {
     this.addOrder();
-    //this.getLastOrderId();
-    /*setTimeout(function(){
-      this.getLastOrderId.emit('lastOrderID', this.getLastOrderId());
-    }, 5000);*/
-    //this.addSmoothieOrder();
+
+    setTimeout(() => {
+      this.getLastOrderId();
+    }, 3000);
+
+    setTimeout(() => {
+      this.addSmoothieOrder();
+    }, 5000);
+
   }
 
 }

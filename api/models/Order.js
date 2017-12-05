@@ -12,7 +12,7 @@ var Order = {
                     console.log('Was not able to add information to database.');
                 }
             });
-            console.log(qbq);
+            console.log("model order qbq" + qbq);
             return qbq;
         },
 

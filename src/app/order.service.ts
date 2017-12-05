@@ -14,10 +14,10 @@ export class OrderService {
     return this.http.post(this.apiUrl, {order})
       .map((res) => res.json())
   }*/
- /* getLastOrderID(){
+  getLastOrderID(){
     return this.http.get(this.apiUrl + 'Order')
-      .map((res) => res.json()).toPromise();
-  }*/
+      .map((res) => res.json());
+  }
 
  
  addOrder(order){

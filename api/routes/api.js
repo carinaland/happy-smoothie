@@ -93,6 +93,17 @@ router.get('/User/:id', function(req, res, next) {
     });
 });
 
+//get logged in user id
+router.get('/User//GetId', function(req, res, next) {
+    User.getUserID(req.params.email, function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
 router.get('/User', function(req, res, next) {
     User.getAllUsers(function(err, rows) {
         if (err) {
@@ -206,37 +217,17 @@ router.post('/Comment/add', function(req, res, next) {
 //Order
 router.post('/Order/add', function(req, res, next) {
     console.log("req.body" + req.body);
-    var idSmoothie = req.body.idSmoothie;
-    var quantity = req.body.quantity;
     var order = {
         'idUser': req.body.idUser,
         'date': req.body.date,
     }
     Order.addOrder(order, function(err, rows) {
         if (err) {
+            console.log('first');
            res.json(err);
         } else {
-            Order.getLastOrderID(function(err, rows) {
-                if (err) {
-                    res.json(err);
-                } else {
-                    console.log(rows);
-                    var smoothieorder = {
-                        'idSmoothie': idSmoothie,
-                        'idOrder':rows.idOrder,
-                        'quantity' : quantity
-                    }
-                    Smoothieorders.addSmoothieOrder(smoothieorder, function(err, rows) {
-                        if (err) {
-                           res.json(err);
-                        } else {
-                           res.json(rows);
-                        }
-                   });
-                    //res.json(rows);
-                }
-            });
-           //res.json(rows);
+            console.log('second');
+           res.json(rows);
         }
    });
 });
@@ -244,6 +235,18 @@ router.post('/Order/add', function(req, res, next) {
 
 router.get('/Order', function(req, res, next) {
     Order.getLastOrderID(function(err, rows) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
+
+//SmoothieOrders - link table 
+router.get('/SmoothieOrders', function(req, res, next) {
+    Smoothieorders.getLastOrderID(function(err, rows) {
         if (err) {
             res.json(err);
         } else {

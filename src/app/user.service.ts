@@ -14,6 +14,10 @@ export class UserService {
       .map((res) => res.json())
   }
 
+  getUserID(email: any): Observable<IUser> {
+    return this.http.get(this.apiUrl + '/GetId')
+      .map((res) => res.json())
+  }
   addUser(user){
     console.log(user)
     var headers = new Headers();

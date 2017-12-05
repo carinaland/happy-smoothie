@@ -9,6 +9,11 @@ var User = {
         return db.query("select * from user where idUser=?", [id], callback);
     },
 
+
+    getUserID: function(email, callback) {
+        return db.query("select iduser from Smoothies.user where email =?", [email], callback);
+    },
+
     addUser: function(User, callback) {
         console.log("check model order.iduser:  " + User.email);
         qbq = db.query("Insert into Smoothies.user values(?,?,?,?,?,?,?)", [0, User.name, User.email, User.street, User.city, User.county, User.eircode], function(err, result) {

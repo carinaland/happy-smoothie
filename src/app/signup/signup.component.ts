@@ -29,10 +29,10 @@ export class SignupComponent implements OnInit {
   }
 
 
-  addUser(email) {
+  addUser(email, name) {
     console.log("ok");
     var user = {
-      name: "",
+      name: name.value,
       street: "",
       city: "",
       county: "",

@@ -15,7 +15,7 @@
           </mat-input-container>
           <br>
           <mat-input-container>
-              <input [(ngModel)]="name" name="name" matInput placeholder="name">
+              <input #name name="name" matInput placeholder="name">
           </mat-input-container>
           <br>
           <mat-input-container style="width: 30%">
@@ -24,7 +24,7 @@
           <br>
      
         <!--  <button (click)="register()" class="btn btn-sm btn-warning">Register</button> -->
-        <button (click)="addUser(email)" mat-raised-button color="primary">Register</button>
+        <button (click)="addUser(email, name)" mat-raised-button color="primary">Register</button>
       </form>
   </mat-card-content>
 </mat-card>
