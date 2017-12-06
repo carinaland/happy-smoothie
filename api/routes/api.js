@@ -117,7 +117,7 @@ router.put('/Smoothies/update/:id', function(req, res, next) {
 
 //User
 router.get('/User/:id', function(req, res, next) {
-    User.getUserById(req.params.id, function(err, rows) {
+    User.getUserID(req.params.id, function(err, rows) {
         if (err) {
             res.json(err);
         } else {
@@ -127,8 +127,12 @@ router.get('/User/:id', function(req, res, next) {
 });
 
 //get logged in user id
-router.get('/User//GetId', function(req, res, next) {
+router.get('/User/GetId/:email', function(req, res, next) {
+    console.log("api")
+    
+    console.log("checkGetId api" + req.params.email)
     User.getUserID(req.params.email, function(err, rows) {
+
         if (err) {
             res.json(err);
         } else {

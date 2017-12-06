@@ -10,8 +10,9 @@ var User = {
     },
 
 
-    getUserID: function(email, callback) {
-        return db.query("select iduser from Smoothies.user where email =?", [email], callback);
+    getUserID: function(emailUser, callback) {
+        console.log("check model user get user id:  " + emailUser);
+        return db.query("select iduser from Smoothies.user where email =?", [emailUser], callback);
     },
 
     addUser: function(User, callback) {

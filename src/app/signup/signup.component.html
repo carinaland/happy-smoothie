@@ -1,6 +1,5 @@
 <app-notification></app-notification>
 <mat-card>
-<<<<<<< HEAD
   <mat-card-header>
       <mat-card-title>
           <h4>Register New User</h4>
@@ -9,14 +8,14 @@
   <mat-card-content>
       <form>
           <mat-input-container>
-              <input #email name="email" matInput placeholder="email" type="email">
+              <input [(ngModel)]="email" name="email" matInput placeholder="email" type="email">
           </mat-input-container>
           <mat-input-container>
               <input [(ngModel)]="pwd" name="password" matInput placeholder="password" type="password">
           </mat-input-container>
           <br>
           <mat-input-container>
-              <input #name name="name" matInput placeholder="name">
+              <input [(ngModel)]="name" name="name" matInput placeholder="name">
           </mat-input-container>
           <br>
           <mat-input-container style="width: 30%">
@@ -24,7 +23,6 @@
           </mat-input-container>
           <br>
      
-        <!--  <button (click)="register()" class="btn btn-sm btn-warning">Register</button> -->
-        <button (click)="addUser(email, name)" mat-raised-button color="primary">Register</button>
+        <button (click)="registerUser()" class="btn btn-sm btn-warning">Register</button>
       </form>
   </mat-card-content>
