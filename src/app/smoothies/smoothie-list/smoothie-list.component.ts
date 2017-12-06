@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ISmoothie } from './smoothies';
+import { SmoothieService } from 'app/providers/smoothie.service';
 
 @Component({
   selector: 'app-smoothie-list',
@@ -7,46 +8,39 @@ import { ISmoothie } from './smoothies';
   styleUrls: ['smoothie-list.component.css']
 })
 export class SmoothieListComponent {
-imageWidth: number = 125;
-imageHeight: number = 125;
-imageMargin: number = 2;
+  imageWidth: number = 125;
+  imageHeight: number = 125;
+  imageMargin: number = 2;
+  smoothies: ISmoothie[];
+  smoothie: any;
+  filteredSmoothies: ISmoothie[];
 
-_listFilter: string ;
-  get listFilter():string{
+  _listFilter: string;
+  get listFilter(): string {
     return this._listFilter;
   }
-  set listFilter(value:string){
+  set listFilter(value: string) {
     this._listFilter = value;
-    this.filteredSmoothies = this.listFilter ? this.performFilter(this.listFilter):this.smoothies;
+    this.filteredSmoothies = this.listFilter ? this.performFilter(this.listFilter) : this.smoothie;
+  }
+
+  getAllSmoothies() {
+    this._smoothieService.getData().subscribe(smoothies => {
+      this.smoothie = smoothies;
+      this.filteredSmoothies = this.smoothie;
+        });
+  }
+
+  constructor(private _smoothieService: SmoothieService) {
+  }
+
+  performFilter(filterBy: string): ISmoothie[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.smoothie.filter((smoothie: ISmoothie) => smoothie.name.toLocaleLowerCase().indexOf(filterBy) != -1 || smoothie.description.toLocaleLowerCase().indexOf(filterBy) != -1);
   }
 
 
-filteredSmoothies: ISmoothie[];
-smoothies: ISmoothie[] = [
-  {
-    "productId" : 1,
-    "name": "Fruity Flamingo",
-    "description": "A mix of Strawberries and Blueberries for our fruity lovers",
-    "price": 3.29,
-    "rating":4.6,
-    "imageUrl": "https://i.imgur.com/1FSTFc6.jpg?1"
-  },
-  {
-    "productId" : 2,
-    "name": "Bitter Berries",
-    "description": "Are you a Bitter Betty? then this is the flavour for you!",
-    "price": 2.79,
-    "rating":3.5,
-    "imageUrl": "https://i.imgur.com/lJI3zgI.jpg"
+  ngOnInit() {
+    this.getAllSmoothies();
   }
-]
-
-constructor() {
-this.filteredSmoothies = this.smoothies
-}
-
-performFilter(filterBy:string):ISmoothie[]{
-  filterBy = filterBy.toLocaleLowerCase();
-  return this.smoothies.filter((smoothie: ISmoothie) => smoothie.name.toLocaleLowerCase().indexOf(filterBy) != -1);
-}
 }
