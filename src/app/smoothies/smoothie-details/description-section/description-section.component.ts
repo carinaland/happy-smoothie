@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { TropicalFruitsService } from "./tropical-fruits.service";
 import { DetailsService } from "../../../details.service";
-import { Iingrediant } from "../../../Interfaces/Iingrediant"
-import { ISmoothie } from 'app/smoothies/smoothie-list/smoothies';
+import { Iingrediant } from "../../../Interfaces/Iingrediant";
+import {ISmoothie} from "../../../smoothielist";
 
 @Component({
   selector: 'app-description-section',
@@ -21,7 +21,8 @@ export class DescriptionSectionComponent implements OnInit {
   constructor(private fruitService: TropicalFruitsService, private detailsService: DetailsService) { }
 
   ngOnInit():void {
-    this.getIngrediants(this.smoothie.productId);
+    console.log(this.smoothie);
+    this.getIngrediants(this.smoothie.idSmoothie);
   }
 
   /**
@@ -29,6 +30,7 @@ export class DescriptionSectionComponent implements OnInit {
    * @param id
    */
   getIngrediants(id:number):void{
+    console.log(id);
     this.detailsService.getIngrediants(id).subscribe(ingrediants => {
       this.ingrediants = ingrediants;
       console.log(this.ingrediants);
