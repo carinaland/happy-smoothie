@@ -1,4 +1,5 @@
 export interface ISmoothie {
+    rating : number;
     idSmoothie : number;
     name: string;
     description: string;

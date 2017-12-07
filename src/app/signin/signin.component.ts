@@ -25,9 +25,6 @@ export class SigninComponent implements OnInit {
     console.log(this.password);
   }
 
-
- 
-
   getUserID() {
     console.log(this.email);
     this.userService.getUserID(this.email).subscribe(returnedUserID => {
