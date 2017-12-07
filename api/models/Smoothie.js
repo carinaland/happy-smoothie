@@ -23,6 +23,9 @@ var Smoothie = {
         return execQ;
     },
     
+    getLastSmoothID: function (callback) {
+        idSmoothie = db.query("Select idSmoothie from Smoothies.smoothies order by idSmoothie desc limit 1", (callback));
+    },
 
     deleteSmoothie: function (id, callback) {
         qbq = db.query("delete from smoothies where idSmoothie=?", [idSmoothie], callback);
@@ -43,9 +46,7 @@ var Smoothie = {
     updateSmoothie: function (smoothies, Task, callback) {
         console.log(smoothies);
         console.log("ssssmm: " + smoothies.idSmoothie);
-        qbq = db.query("update smoothies set name=? ,price=?, description=?, ImageUrl, where idSmoothie=?",
-            [smoothies.name, smoothies.price, smoothies.description,
-            smoothies.ImageUrl, smoothies.idSmoothie], function(err, result)
+        qbq = db.query("update Smoothies.smoothies set name=? ,price=?, description=?, imageUrl=? where idSmoothie=?",[smoothies.name, smoothies.price, smoothies.description, smoothies.imageUrl, smoothies.idSmoothie], function(err, result)
         {
             if (!err) {
                 console.log('Successfully updated Smoothie.');
@@ -63,6 +64,6 @@ var Smoothie = {
         return db.query("select  idSmoothie, name, price, imageUrl,  1 as quantity from smoothies where smoothies.idSmoothie in (?)", [id1], callback);
     }
     //some other Requests
-    // ....
+    // ..
 };
 module.exports = Smoothie;

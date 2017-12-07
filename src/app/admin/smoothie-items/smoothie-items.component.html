@@ -16,7 +16,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let sInfo of smoothies let i = index">
+      <!--; let index=i -->
+      <tr *ngFor="let sInfo of smoothies; let i = index;">
         <td> <img [src]='sInfo.imageUrl' [style.width.px]='imageWidth' [style.height.px]='imageHeight' [style.margin.px]='imageMargin'></td>
         <td #name>{{sInfo.name }}</td>
         <td #price>{{sInfo.price | currency: "EUR" :true:"1.2-2"}}</td>
@@ -26,7 +27,7 @@
           </div>
         </td>
         <td #description>{{sInfo.description}}</td>
-        <td><button (click)="edit=!edit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+        <td><button (click)="editSmoothie(i)" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
           <button id="delbtn" (click)="deleteSmoothie(sInfo.idSmoothie)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
     </tbody>
@@ -38,40 +39,41 @@
         <div class="col-xs-12">
           <div class="container">
             <form class="form-horizontal">
-              <h3>Add Smoothie</h3>
-              <div *ngFor="let sInfo of smoothies">
+              <h3>Edit Smoothie</h3>
+              <div *ngFor="let sInfo of oneSmoothie">
                 <div class="form-group">
                   <label class="control-label col-sm-2">Image:</label>
                   <div class="col-sm-3">
-                    <input type="text" #editimage value="{{sInfo.imageUrl}}" class="form-control">
+                      <input type="hidden" #idSmoothie  value="{{sInfo.idSmoothie}}">
+                    <input type="text" class="form-control" #imageUrl value="{{sInfo.imageUrl}}">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2">Name:</label>
                   <div class="col-sm-3">
-                    <input type="text" #editname value="{{sInfo.name}}" class="form-control">
+                    <input type="text" class="form-control" #name value="{{sInfo.name}}" >
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2">Price:</label>
                   <div class="col-sm-3">
-                    <input type="text" #editPrice value=" {{sInfo.price}}" class="form-control">
+                    <input type="text" class="form-control" #price value=" {{sInfo.price}}" >
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2">Ingredients:</label>
                   <div *ngFor="let ingre of sInfo.ingrediants" class="col-sm-2">
-                    <input type="text" #editIngre value="{{ingre.name}}" class="form-control" placeholder="Enter ingredient">
+                    <input type="text" class="form-control" #editIngre value="{{ingre.name}}"  placeholder="Enter ingredient">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2">Description:</label>
                   <div class="col-sm-4">
-                    <textarea #editDes value="{{sInfo.description}}" class="form-control" rows="5" id="comment"></textarea>
+                    <textarea #description value="{{sInfo.description}}"  rows="5" id="comment"></textarea>
                   </div>
                 </div>
-                <div class="ui buttons">
-                  <button (click)="updateSmoothie(editimage, editname, editPrice, editIngre ,editDes )" type="button" class="btn btn-sm btn-info">
+                <div class="ui buttons ">
+                  <button (click)="updateSmoothie(idSmoothie, name, price , description, imageUrl )" type="button" class="btn btn-sm btn-info">
                 <span class="glyphicon glyphicon-ok-sign"></span> Save
               </button>
                   <div class="or"></div>

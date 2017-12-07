@@ -22,6 +22,7 @@ export class SmoothieItemsComponent implements OnInit {
   ingrediants: Iingrediant;
   smoothies: any;
   groß = 'hallo';
+  public oneSmoothie = [];
 
   constructor(private _smoothieService: SmoothieService, private _detailsService: DetailsService) {
   }
@@ -32,14 +33,21 @@ export class SmoothieItemsComponent implements OnInit {
     });
   }
 
-  updateSmoothie(editimage, editname, editPrice, editIngre, editDes) {
-    console.log(` Image: ${editimage.value}, Name: ${editname.value} Price: ${editPrice.value} Ingredient: ${editIngre.value} Description: ${editDes.value} `);
+  editSmoothie(i){
+    this.oneSmoothie.push(this.smoothies[i]);
+    this.edit = true;
+  }
+
+
+  updateSmoothie(idSmoothie, name, price , description, imageUrl,) {
+    console.log(idSmoothie.value, imageUrl.value , name.value, price.value, description.value)
+   // console.log(` Image: ${editimage.value}, Name: ${editname.value} Price: ${editPrice.value} Ingredient: ${editIngre.value} Description: ${editDes.value} `);
     var smoothie = {
-      // 'idSmoothie': this.idSmoothie,
-      'name': editname.value,
-      'price': editPrice.value,
-      'description': editDes.value,
-      'imageUrl': editimage.value
+     'idSmoothie': idSmoothie.value,
+      'name': name.value,
+      'price': price.value,
+      'description': description.value,
+      'imageUrl': imageUrl.value
     };
     this._smoothieService.updateSmoothie(smoothie).subscribe(res => {
       var res = res;
