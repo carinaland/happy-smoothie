@@ -29,6 +29,7 @@ export class SigninComponent implements OnInit {
     console.log(this.email);
     this.userService.getUserID(this.email).subscribe(returnedUserID => {
       this.userID = returnedUserID[0];
+      console.log('#nnnn');
       this.cookieService.set('userID', JSON.stringify(this.userID));
     });
   }
