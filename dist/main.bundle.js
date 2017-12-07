@@ -2775,7 +2775,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/smoothies/smoothie-list/smoothie-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<head>\n    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n  </head>\n  \n  <div class=\"container\">\n  <div>\n    \n    <div class=\"panel-body\">\n      <div >\n          \n        <div class=\"col-xs-12\">\n            <h1>Our Smoothies</h1>\n            <h2>Search Our Smoothies :</h2>\n            <p></p>\n            <div class=\"input-group add-on\">\n                <input  [(ngModel)]=\"listFilter\" \n                class=\"form-control\" placeholder=\"e.g. fruity, bitter..\" name=\"srch\" id=\"srch\" type=\"text\">\n              </div>\n        </div>\n      </div>\n\n      \n\n      <div class=\"col-xs-12 blogShort multiple-borders\" *ngFor=\"let smoothie of filteredSmoothies\">\n        <h1>{{smoothie.name}} - {{smoothie.price | currency: \"EUR\" :true:\"1.2-2\"}}</h1>\n        <img [src]=\"smoothie.imageUrl\" [title]=\"smoothie.name\" [style.width.px]=\"imageWidth\" \n        [style.height.px]=\"imageHeight\" [style.margin.px]=\"imageMargin\"\n          class=\"pull-left img-responsive thumb margin10 img-thumbnail\">\n        <article>\n          <p>\n            {{smoothie.description}}\n          </p>\n        </article>\n        <app-star-rating [rating]=\"smoothie.rating\"></app-star-rating>\n        <a class=\"btn btn-blog pull-right \"[routerLink]=\"['details/:' + smoothie.productId]\">READ MORE</a>\n        <a class=\"marginBottom10\"></a>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<head>\n    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n  </head>\n  \n  <div class=\"container\">\n  <div>\n    \n    <div class=\"panel-body\">\n      <div >\n          \n        <div class=\"col-xs-12\">\n            <h1>Our Smoothies</h1>\n            <h2>Search Our Smoothies :</h2>\n            <p></p>\n            <div class=\"input-group add-on\">\n                <input  [(ngModel)]=\"listFilter\" \n                class=\"form-control\" placeholder=\"e.g. fruity, bitter..\" name=\"srch\" id=\"srch\" type=\"text\">\n              </div>\n        </div>\n      </div>\n\n      \n\n      <div class=\"col-xs-12 blogShort multiple-borders\" *ngFor=\"let smoothie of filteredSmoothies\">\n        <h1>{{smoothie.name}} - {{smoothie.price | currency: \"EUR\" :true:\"1.2-2\"}}</h1>\n        <img [src]=\"smoothie.imageUrl\" [title]=\"smoothie.name\" [style.width.px]=\"imageWidth\" \n        [style.height.px]=\"imageHeight\" [style.margin.px]=\"imageMargin\"\n          class=\"pull-left img-responsive thumb margin10 img-thumbnail\">\n        <article>\n          <p>\n            {{smoothie.description}}\n          </p>\n        </article>\n        <app-star-rating [rating]=\"smoothie.rating\"></app-star-rating>\n        <a class=\"btn btn-blog pull-right \"[routerLink]=\"['details/:' + smoothie.idSmoothie]\">READ MORE</a>\n        <a class=\"marginBottom10\"></a>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -2785,6 +2785,7 @@ module.exports = "<head>\n    <link rel=\"stylesheet\" href=\"https://maxcdn.boo
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmoothieListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_providers_smoothie_service__ = __webpack_require__("../../../../../src/app/providers/smoothie.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2795,41 +2796,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 let SmoothieListComponent = class SmoothieListComponent {
-    constructor() {
+    constructor(_smoothieService) {
+        this._smoothieService = _smoothieService;
         this.imageWidth = 125;
         this.imageHeight = 125;
         this.imageMargin = 2;
-        this.smoothies = [
-            {
-                "productId": 1,
-                "name": "Fruity Flamingo",
-                "description": "A mix of Strawberries and Blueberries for our fruity lovers",
-                "price": 3.29,
-                "rating": 4.6,
-                "imageUrl": "https://i.imgur.com/1FSTFc6.jpg?1"
-            },
-            {
-                "productId": 2,
-                "name": "Bitter Berries",
-                "description": "Are you a Bitter Betty? then this is the flavour for you!",
-                "price": 2.79,
-                "rating": 3.5,
-                "imageUrl": "https://i.imgur.com/lJI3zgI.jpg"
-            }
-        ];
-        this.filteredSmoothies = this.smoothies;
     }
     get listFilter() {
         return this._listFilter;
     }
     set listFilter(value) {
         this._listFilter = value;
-        this.filteredSmoothies = this.listFilter ? this.performFilter(this.listFilter) : this.smoothies;
+        this.filteredSmoothies = this.listFilter ? this.performFilter(this.listFilter) : this.smoothie;
+    }
+    getAllSmoothies() {
+        this._smoothieService.getData().subscribe(smoothies => {
+            this.smoothie = smoothies;
+            this.filteredSmoothies = this.smoothie;
+        });
     }
     performFilter(filterBy) {
         filterBy = filterBy.toLocaleLowerCase();
-        return this.smoothies.filter((smoothie) => smoothie.name.toLocaleLowerCase().indexOf(filterBy) != -1);
+        return this.smoothie.filter((smoothie) => smoothie.name.toLocaleLowerCase().indexOf(filterBy) != -1 || smoothie.description.toLocaleLowerCase().indexOf(filterBy) != -1);
+    }
+    ngOnInit() {
+        this.getAllSmoothies();
     }
 };
 SmoothieListComponent = __decorate([
@@ -2838,9 +2831,10 @@ SmoothieListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/smoothies/smoothie-list/smoothie-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/smoothies/smoothie-list/smoothie-list.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_providers_smoothie_service__["a" /* SmoothieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_providers_smoothie_service__["a" /* SmoothieService */]) === "function" && _a || Object])
 ], SmoothieListComponent);
 
+var _a;
 //# sourceMappingURL=smoothie-list.component.js.map
 
 /***/ }),
