@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ISmoothie } from './smoothies';
 import { SmoothieService } from 'app/providers/smoothie.service';
+import { ISmoothie } from './smoothies';
 
 @Component({
   selector: 'app-smoothie-list',
@@ -38,7 +38,6 @@ export class SmoothieListComponent {
     filterBy = filterBy.toLocaleLowerCase();
     return this.smoothie.filter((smoothie: ISmoothie) => smoothie.name.toLocaleLowerCase().indexOf(filterBy) != -1 || smoothie.description.toLocaleLowerCase().indexOf(filterBy) != -1);
   }
-
 
   ngOnInit() {
     this.getAllSmoothies();
