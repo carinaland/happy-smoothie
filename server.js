@@ -2,6 +2,9 @@ var express = require('express')
     , http = require('http');
 //make sure you keep this order
 var app = express();
+
+
+
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
@@ -26,7 +29,7 @@ app.use('/api', api);
 app.use('/ctrl', ctrl);
 
 app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname, 'src/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 //SOKET
