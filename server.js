@@ -3,6 +3,7 @@ var express = require('express')
 //make sure you keep this order
 var app = express();
 
+var UglifyJS = require("uglify-es");
 
 
 var server = http.createServer(app);
