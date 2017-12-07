@@ -22,17 +22,19 @@ export class CartComponent implements OnInit {
   addOrderVar: any;
   objSmoothie: any;
   objSmoothieArray = [];
+  public userID = [];
 
   constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService, private cookieService: CookieService) { }
 
   ngOnInit() {
-
+    this.userID = JSON.parse(this.cookieService.get('userID'));
   }
 
   showAddress() {
     this.showAdd = true;
   }
 
+  
 
   addOrder() {
     //insert order into order table

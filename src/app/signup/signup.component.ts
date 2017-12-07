@@ -29,23 +29,32 @@ export class SignupComponent implements OnInit {
   }
 
 
-  addUser(email, name) {
-    console.log("ok");
-    var user = {
-      name: name.value,
-      street: "",
-      city: "",
-      county: "",
-      eircode: "",
-      email: email.value,
-    }
-    console.log(user);
+   addUser() {
+     console.log("ok");
+     var user = {
+       name: this.name,
+       street: "",
+       city: "",
+       county: "",
+       eircode: "",
+       email: this.email,
+     }
+     console.log(user);
+ 
+     this.userService.addUser(user).subscribe(res => {
+       var res = res;
+       console.log(res);
+     });
+   }
 
-    this.userService.addUser(user).subscribe(res => {
-      var res = res;
-      console.log(res);
-    });
-  }
+
+   registerUser(){
+    this.register();
+    this.addUser();
+   }
+
+
+  
 }
 
 

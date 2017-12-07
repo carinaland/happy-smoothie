@@ -15,6 +15,7 @@ export class DetailsService {
   }
 
   getIngrediants(idSmoothie) {
+    console.log(idSmoothie);
     return this.http.get(api + 'Smoothie/' + idSmoothie + '/Ingrediants')
         .map(res => res.json());
   }

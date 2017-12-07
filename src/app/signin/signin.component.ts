@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthUserService } from '../providers/auth-user.service';
 import { NotificationService } from '../providers/notification.service';
 import { UserService } from 'app/user.service';
@@ -10,10 +10,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SigninComponent implements OnInit {
   @Input() user;
+  name: string;
   email: string;
   password: string;
+  UserIDs: any;
   public userID: any;
-  constructor(private auth: AuthUserService, private userService:UserService, private cookieService: CookieService) { }
+  constructor(private auth: AuthUserService, private userService: UserService, private cookieService: CookieService) { }
 
   ngOnInit() {
   }
@@ -23,28 +25,19 @@ export class SigninComponent implements OnInit {
     console.log(this.password);
   }
 
- /* getUserID(email){
-    console.log("email" + this.email)
-    var emailUser= {
-      email: email.value
-    }
-  this.userService.getUserID(emailUser).subscribe(user => {
-    userID= 
-  });
+  getUserID() {
+    console.log(this.email);
+    this.userService.getUserID(this.email).subscribe(returnedUserID => {
+      this.userID = returnedUserID[0];
+      this.cookieService.set('userID', JSON.stringify(this.userID));
+    });
   }
-  loginUserID(){
+ 
+ loginUserID() {
     this.login();
-    this.getUserID(this.email);
-  }*/
-
-  UserID(){
-    if (this.cookieService.check('userID')) {
-      this.userID = JSON.parse(this.cookieService.get('userID'));
-    }
-
-    this.userID.push({"id": this.user.iduser,});
-    this.cookieService.set( 'userID', JSON.stringify(this.userID) );
-    console.log("user logged in userID " + this.userID);
-   
+    this.getUserID();
+    
   }
+
+ 
 }

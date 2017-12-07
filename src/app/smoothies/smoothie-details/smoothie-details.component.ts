@@ -23,7 +23,6 @@ export class SmoothieDetailsComponent implements OnInit {
       this.passedId = params['id'].slice(1);
     });
 
-    //get smoothie details
     this.detailsService.getSmoothie(this.passedId).subscribe(product => {
       this.product = product[0];
     });
