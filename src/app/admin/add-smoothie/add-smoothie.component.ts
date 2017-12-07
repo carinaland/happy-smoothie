@@ -28,4 +28,24 @@ export class AddSmoothieComponent implements OnInit {
     });
     return false;
   } 
+
+
+  /*
+  getLastSmoothID() {
+    //getting the last orderID
+    console.log("get last order");
+    this._smoothieService.getLastSmoothID().subscribe((returedSmoothieID) => {
+      this.lastOrderId = returedSmoothieID;
+      for (var i = 0; i < this.lastOrderId.length; i++) {
+        this.OrderID = this.lastOrderId[i];
+        console.log("OrderID" + this.OrderID);
+        this.OrderIDArray.push(this.OrderID.idOrder)
+        for (var i = 0; i < this.OrderIDArray.length; i++) {
+          this.lastlastOderID = this.OrderIDArray[i];
+          console.log("lastlastOderID" + this.lastlastOderID);
+        }
+      }
+    })
+  } 
+   */
 }

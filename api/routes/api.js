@@ -63,8 +63,10 @@ router.get('/Smoothies', function(req, res, next) {
     });
 });
 
+
+//http://localhost:3100/api/Smoothies/delete
 //delete
-router.post('/Smoothies/delete', function(req, res, next) {
+router.post('/Smoothies/delete/', function(req, res, next) {
     console.log('try to delete');
     Smoothie.deleteSmoothie(req.params.id, function(err, rows) {
          if (err) {
@@ -98,14 +100,15 @@ router.put('/Smoothies/update/:id', function(req, res, next) {
     console.log('api Update Smoothie');
     console.log(req.body);
     var smoothie = {
-        'idSmoothie': req.body.idSmoothie,
+       'idSmoothie': req.body.idSmoothie,
         'name': req.body.name,
         'price': req.body.price,
         'description': req.body.description,
         'imageUrl': req.body.imageUrl,
-      'averageRating':req.body.averageRating,
-    }
-    Smoothie.addSmoothie(smoothie, function(err, rows) {
+     // 'averageRating':req.body.averageRating,
+    }     
+        
+    Smoothie.updateSmoothie(smoothie, function(err, rows) {
         if (err) {
            res.json(err);
         } else {
@@ -131,6 +134,7 @@ router.get('/User/GetId/:email', function(req, res, next) {
     console.log("api")
     
     console.log("checkGetId api" + req.params.email)
+
     User.getUserID(req.params.email, function(err, rows) {
 
         if (err) {
