@@ -3,6 +3,7 @@ var express = require('express')
 //make sure you keep this order
 var app = express();
 
+var UglifyJS = require("uglify-es");
 
 
 var server = http.createServer(app);
@@ -29,7 +30,7 @@ app.use('/api', api);
 app.use('/ctrl', ctrl);
 
 app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'src/index.html'));
 });
 
 //SOKET

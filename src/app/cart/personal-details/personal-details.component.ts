@@ -26,7 +26,7 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   loadPersonalDetails() : void {
-    this.userService.getUser(5).subscribe((returnedUser) =>{
+    this.userService.getUserById(5).subscribe((returnedUser) =>{
       this.user = returnedUser; 
 
       })

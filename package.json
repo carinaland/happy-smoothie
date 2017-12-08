@@ -4,20 +4,23 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --aot",
+    "deploy": "git push origin master && git push heroku master"
   },
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
     "@angular/animations": "^4.0.0",
     "@angular/cdk": "^2.0.0-beta.12",
+    "@angular/cli": "^1.4.9",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
@@ -26,7 +29,6 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angularfire": "^2.3.0",
-    "angularfire2": "^5.0.0-rc.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-alpha.6",
     "connect-multiparty": "^2.1.0",
@@ -39,9 +41,8 @@
     "rxjs": "^5.1.0",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
-    "zone.js": "^0.8.4",
-    "@angular/cli": "^1.4.9",
-    "@angular/compiler-cli": "^4.0.0"
+    "uglify-es": "^3.2.1",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "^1.4.9",
@@ -66,7 +67,7 @@
     "typescript": "~2.3.3"
   },
   "engines": {
-  "node": "6.9.2",
-  "npm": "5.4.2"
-}
+    "node": "6.9.2",
+    "npm": "5.4.2"
+  }
 }
