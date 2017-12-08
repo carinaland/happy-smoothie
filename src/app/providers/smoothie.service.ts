@@ -28,6 +28,16 @@ export class SmoothieService {
       .map((res) => res.json());
   }
 */
+/*deleteSmoothie(idSmoothie: number) {
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  var object = {'idSmoothie': idSmoothie}
+  var data = JSON.stringify(object);
+  console.log(data);
+  return this.http.post('http://localhost:3100/api/Smoothies/delete', data, {headers: headers})
+  .map(res => res.json()); 
+}*/
 
   addSmoothie(smoothie){
     console.log('Check add smoothie service!!!!!!');
@@ -40,6 +50,19 @@ export class SmoothieService {
     return this.http.post('http://localhost:3100/api/Smoothies/Add', data, {headers: headers})
         .map(res => res.json()); 
   }
+
+  deleteSmoothie(smoothieId){
+    console.log('Check delete smoothie service!!!!!!');
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    var object = {'idSmoothie': smoothieId}
+    var data = JSON.stringify(object);
+    console.log(data);
+    console.log('getting there!!!!!!');
+    return this.http.put('http://localhost:3100/api/Smoothies/delete/' + smoothieId, {headers: headers})
+        .map(res => res.json()); 
+  }
   
   updateSmoothie(smoothie) {
     var headers = new Headers();
@@ -50,17 +73,6 @@ export class SmoothieService {
       .map(res => res.json());
   }
 
-
-  deleteSmoothie(idSmoothie: number) {
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    var object = {'idSmoothie': idSmoothie}
-    var data = JSON.stringify(object);
-    console.log('go to service' +  idSmoothie);
-    return this.http.post('http://localhost:3100/api/Smoothies/delete' + data, {headers: headers})
-    .map(res => res.json()); 
-  }
 }
 
 
