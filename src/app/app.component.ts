@@ -29,8 +29,8 @@ public isLoggedIn: Boolean;
       }
       else {      
        console.log("Logged out");
-       this.user_displayName = '';
-       this.user_email ='';
+     //  this.user_displayName = '';
+      // this.user_email ='';
       // this.router.navigate(['loginAdmin']);
       }
     });

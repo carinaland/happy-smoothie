@@ -15,16 +15,11 @@ export class AdminComponent implements OnInit {
   constructor(public authService: AuthService, public router: Router, public afAuth: AngularFireAuth) {
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (user != null) {
-        this.isLoggedIn = true;
-        this.user_displayName = user.displayName;
-        this.user_email = user.email;
         console.log("Logged in");
         this.router.navigate(['admin']);
       }
       else {      
        console.log("Logged out");
-       this.user_displayName = '';
-       this.user_email ='';
       }
     });
   }
