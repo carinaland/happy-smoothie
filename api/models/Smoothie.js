@@ -28,7 +28,7 @@ var Smoothie = {
     },
 
     deleteSmoothie: function (id, callback) {
-        qbq = db.query("delete from smoothies where idSmoothie=?", [idSmoothie], callback);
+        qbq = db.query("delete from smoothies where idSmoothie=?", [idSmoothie], callback); //issue
         //  return db.query("delete from smoothies where idSmoothie=5", [idSmoothie], callback);
         {
             if (!err) {

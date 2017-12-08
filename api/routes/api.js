@@ -68,7 +68,7 @@ router.get('/Smoothies', function(req, res, next) {
 //delete
 router.post('/Smoothies/delete/', function(req, res, next) {
     console.log('try to delete');
-    Smoothie.deleteSmoothie(req.params.id, function(err, rows) {
+    Smoothie.deleteSmoothie(req.params.id, function(err, rows) { //issue here
          if (err) {
             res.json(err);
          } else {
