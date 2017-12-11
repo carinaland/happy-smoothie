@@ -55,8 +55,13 @@ export class SmoothieItemsComponent implements OnInit {
   }
 
   deleteSmoothie(i) {
-    this._smoothieService.deleteSmoothie(i)
+    //this._smoothieService.deleteSmoothie(i);
     console.log(i);
+    this._smoothieService.deleteSmoothie(i).subscribe(res => {
+      var res = res;
+      console.log(res);
+    });
+
   }
 
   ngOnInit() {

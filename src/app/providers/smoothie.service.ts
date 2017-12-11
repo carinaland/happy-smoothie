@@ -11,9 +11,9 @@ export class SmoothieService {
     private http: Http
   ) { }
 
-
+//http://peaceful-reef-13737.herokuapp.com/api/Smoothies
   getData() {
-    return this.http.get(this.apiUrl)
+   return this.http.get("http://localhost:3100/api/Smoothies")
       .map((res: Response) => res.json());
   }
 
@@ -52,36 +52,19 @@ export class SmoothieService {
   }
 
 
-  deleteSmoothie(smoothieId) {
+  deleteSmoothie(idSmoothie) {
     console.log('Check delete smoothie service!!!!!!');
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    var object = { 'idSmoothie': smoothieId }
+    var object = { 'idSmoothie': idSmoothie }
     var data = JSON.stringify(object);
-    console.log(data);
+    console.log('datatattatataa',data);
     console.log('getting there!!!!!!');
-    return this.http.put('http://localhost:3100/api/Smoothies/delete/' + smoothieId, { headers: headers })
-      .map(res => res.json());
+    return this.http.delete('http://localhost:3100/api/Smoothies/delete/' + idSmoothie, { headers: headers })
+    .map((res:Response) => {console.log(res.toString())
+      res.json()});
 
-
-
-    /*deleteSmoothie(idSmoothie: number) {
-     var headers = new Headers();
-     headers.append('Content-Type', 'application/json');
-   
-     var object = {'idSmoothie': idSmoothie}
-     var data = JSON.stringify(object);
-     console.log(data);
-     return this.http.post('http://localhost:3100/api/Smoothies/delete', data, {headers: headers})
-     .map(res => res.json()); 
-   }*/
   }
 
 }
-
- /*
-    var data = JSON.stringify(idSmoothie);
-    return this.http.post('http://localhost:3100/api/Smoothies/delete/:21', data, {headers: headers})
-          .map((res:Response) => {console.log(res.toString())
-          res.json()}); */

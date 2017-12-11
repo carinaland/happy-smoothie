@@ -65,7 +65,7 @@ router.get('/Smoothies', function(req, res, next) {
 
 
 //delete
-router.put('/Smoothies/delete/:id', function(req, res, next) {
+router.delete('/Smoothies/delete/:id', function(req, res, next) {
     console.log('try to delete');
     Smoothie.deleteSmoothie(req.params.id, function(err, rows) { //issue here
          if (err) {
