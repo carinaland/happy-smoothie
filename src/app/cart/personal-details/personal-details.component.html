@@ -31,10 +31,11 @@
       <input type="text" class="form-control" name="email" value={{u.email}} #email required />
     </div>
   </div>
-  <div  class="row text-right">
+  <div  class="row text-right" id="editBtn">
     <div class="col-sm-12">
+        <br>
         <button type="subbmit" class="btn btn-success btn-sm" (click)="editUserDetails()" >Edit</button>
-      <button type="subbmit" class="btn btn-success btn-sm" (click)="updateUser(name, street, city, county, eircode, email)" *ngIf="savePersonalDetails">Save</button>
+      <button type="subbmit" class="btn btn-success btn-sm" id="saveBtn"(click)="updateUser(name, street, city, county, eircode, email)" *ngIf="savePersonalDetails">Save</button>
     </div>
   </div>
 </form>

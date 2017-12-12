@@ -191,3 +191,11 @@ label {
         width: 40%;
       }
     }
+.checkContinueBtn{
+  margin-bottom: 20px !important;
+}
+
+#payBtn{
+  float: right;
+  margin-top:15px;
+}
