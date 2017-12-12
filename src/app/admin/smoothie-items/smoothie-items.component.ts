@@ -38,11 +38,9 @@ export class SmoothieItemsComponent implements OnInit {
     this.edit = true;
   }
 
-
   updateSmoothie(idSmoothie, name, price , description, imageUrl,) {
     console.log(idSmoothie.value, imageUrl.value , name.value, price.value, description.value)
-   // console.log(` Image: ${editimage.value}, Name: ${editname.value} Price: ${editPrice.value} Ingredient: ${editIngre.value} Description: ${editDes.value} `);
-    var smoothie = {
+  var smoothie = {
      'idSmoothie': idSmoothie.value,
       'name': name.value,
       'price': price.value,
@@ -57,10 +55,14 @@ export class SmoothieItemsComponent implements OnInit {
   }
 
   deleteSmoothie(i) {
-    this._smoothieService.deleteSmoothie(i)
+    //this._smoothieService.deleteSmoothie(i);
     console.log(i);
-  }
+    this._smoothieService.deleteSmoothie(i).subscribe(res => {
+      var res = res;
+      console.log(res);
+    });
 
+  }
 
   ngOnInit() {
     this.getDatabaseData();

@@ -9,7 +9,7 @@ export class UserService {
   private apiUrl = "http://localhost:3100/api/User";
   constructor(private http: Http) { }
 
-  getUser(id: number): Observable<IUser> {
+  getUserById(id: number): Observable<IUser> {
     return this.http.get(this.apiUrl + `/${id}`)
       .map((res) => res.json())
   }

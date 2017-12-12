@@ -64,11 +64,10 @@ router.get('/Smoothies', function(req, res, next) {
 });
 
 
-//http://localhost:3100/api/Smoothies/delete
 //delete
-router.post('/Smoothies/delete/', function(req, res, next) {
+router.delete('/Smoothies/delete/:id', function(req, res, next) {
     console.log('try to delete');
-    Smoothie.deleteSmoothie(req.params.id, function(err, rows) {
+    Smoothie.deleteSmoothie(req.params.id, function(err, rows) { //issue here
          if (err) {
             res.json(err);
          } else {
@@ -120,7 +119,7 @@ router.put('/Smoothies/update/:id', function(req, res, next) {
 
 //User
 router.get('/User/:id', function(req, res, next) {
-    User.getUserID(req.params.id, function(err, rows) {
+    User.getUserById(req.params.id, function(err, rows) {
         if (err) {
             res.json(err);
         } else {
@@ -128,7 +127,6 @@ router.get('/User/:id', function(req, res, next) {
         }
     });
 });
-
 //get logged in user id
 router.get('/User/GetId/:email', function(req, res, next) {
     console.log("api")

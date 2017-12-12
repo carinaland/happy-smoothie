@@ -27,8 +27,10 @@ var Smoothie = {
         idSmoothie = db.query("Select idSmoothie from Smoothies.smoothies order by idSmoothie desc limit 1", (callback));
     },
 
-    deleteSmoothie: function (id, callback) {
-        qbq = db.query("delete from smoothies where idSmoothie=?", [idSmoothie], callback);
+    deleteSmoothie: function (idSmoothie, Task,  callback) {
+        console.log(idSmoothie);
+        console.log("delete Smoothie: " + idSmoothie);
+        qbq = db.query("delete from Smoothies.smoothies where idSmoothie=?", [idSmoothie], function(err, result) //issue
         //  return db.query("delete from smoothies where idSmoothie=5", [idSmoothie], callback);
         {
             if (!err) {
@@ -37,7 +39,7 @@ var Smoothie = {
                 console.log(result);
                 console.log('Was not able to delete Smoothie.');
             }
-        };
+        });
         console.log(qbq);
         return qbq;
     },

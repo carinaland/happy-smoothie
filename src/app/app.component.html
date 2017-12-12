@@ -1,17 +1,17 @@
 <div *ngIf="isLoggedIn">
-  <p class="navbar-text navbar-right">Logged In: {{user_displayName}} ({{user_email}})<p>
+  <p class="navbar-text navbar-right">Logged In: {{user_displayName}} ({{user_email}})
+    <p>
 </div>
 <div *ngIf="!isLoggedIn">
   <p class="navbar-text navbar-right">Logged Out</p>
 </div>
-<p><button class="btn btn-sm btn-warning" (click)="logout()">Log Out</button></p>   
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 
 <div style="text-align:center">
-    <a class="active item" [routerLink]="['home']">
+  <a class="active item" [routerLink]="['home']">
       <img id="bannerLogo" src="https://i.imgur.com/zCOGRwK.png" title="logo" />
       </a>
 </div>
@@ -40,7 +40,7 @@
     <div class="width-adjust">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a class="active item" [routerLink]="['home']"> Home</a></li>
+          <li><a class="active item" [routerLink]="['home']"> Home</a></li>
           <li><a class="active item" [routerLink]="['smoothies']"> Smoothies</a></li>
           <li><a class="active item" [routerLink]="['shop']"> Shop</a></li>
           <li><a class="active item" [routerLink]="['contact']">Contact Us</a></li>
@@ -55,9 +55,10 @@
       </form>-->
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="active item" [routerLink]="['loginAdmin']">Admin</a></li>        
+          <li><a class="active item" [routerLink]="['loginAdmin']">Admin</a></li>
           <li><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
         </ul>
       </div>
     </div>
@@ -68,28 +69,29 @@
 
 <router-outlet></router-outlet>
 
-<footer> 
+<footer>
 
-    <ul class="nav navbar-nav navbar-right">
-       <li><a  [routerLink]="['loginAdmin']">Admin</a></li>
-        <li><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <li><a  [routerLink]="['home']"> Home</a></li>
-        <li><a  [routerLink]="['smoothies']"> Smoothies</a></li>
-        <li><a  [routerLink]="['shop']"> Shop</a></li>
-        <li><a  [routerLink]="['contact']">Contact Us</a></li>
-        
-  
-      </ul>
-      <div class="container adjust-footer">Copyright &copy; <strong>HappySmoothies Inc.</strong> 2017</div>
-  </footer>
- 
+  <ul class="nav navbar-nav navbar-right">
+    <li><a [routerLink]="['loginAdmin']">Admin</a></li>
+    <li><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a [routerLink]="['home']"> Home</a></li>
+    <li><a [routerLink]="['smoothies']"> Smoothies</a></li>
+    <li><a [routerLink]="['shop']"> Shop</a></li>
+    <li><a [routerLink]="['contact']">Contact Us</a></li>
 
 
+  </ul>
+  <div class="container adjust-footer">Copyright &copy; <strong>HappySmoothies Inc.</strong> 2017</div>
+</footer>
 
-  <!--
+
+
+
+<!--
   <div class="container">
     <div class="alert alert-warning alert-dismissible" role="alert">
        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

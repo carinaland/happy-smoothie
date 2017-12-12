@@ -36,7 +36,9 @@ export class CartDetailsComponent implements OnInit {
   loadCart(): void {
 
     this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
+    console.log("cookie" +  this.selectedSmoothies.length);
 
+    if (this.selectedSmoothies.length > 0){
     this.selectedSmoothies.sort(function (a, b) {
       return a.id - b.id
     });
@@ -64,6 +66,9 @@ export class CartDetailsComponent implements OnInit {
       } 
       this.countTotal(this.cart);
     })
+  }else{
+    var message = "Cart is empty";
+  }
   }
 
   //increment quantity
