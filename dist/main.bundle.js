@@ -5188,7 +5188,7 @@ class AddCommentComponent {
         this.commentService = commentService;
         this.comment = '';
         this.rating = 5;
-        this.url = 'http://localhost:3100';
+        this.url = 'https://peaceful-reef-13737.herokuapp.com';
     }
     ngOnInit() {
         this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__(this.url);
@@ -5302,7 +5302,7 @@ class CommentComponent {
 class CommentsComponent {
     constructor(commentService) {
         this.commentService = commentService;
-        this.url = 'http://localhost:3100';
+        this.url = 'https://peaceful-reef-13737.herokuapp.com';
     }
     ngOnInit() {
         this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__(this.url);

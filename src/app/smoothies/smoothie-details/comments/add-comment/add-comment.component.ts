@@ -15,7 +15,7 @@ export class AddCommentComponent implements OnInit {
 
   private socket;
 
-  url : string = 'http://localhost:3100';
+  url : string = 'https://peaceful-reef-13737.herokuapp.com';
 
   constructor(private commentService: CommentService) { }
 
