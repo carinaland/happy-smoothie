@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUser } from 'app/user';
 import { UserService } from 'app/user.service';
 import { Observable } from 'rxjs/Observable';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -19,18 +20,31 @@ export class PersonalDetailsComponent implements OnInit {
   editPersonalDetails: boolean = true;
   savePersonalDetails: boolean = false;
   myform:boolean = false;
-  constructor(private userService : UserService) { }
+ public userIDCookie = [];
+ userID = [];
+ userIDlast: any;
+  constructor(private userService : UserService, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.loadPersonalDetails();
   }
 
-  loadPersonalDetails() : void {
-    this.userService.getUserById(5).subscribe((returnedUser) =>{
+  loadPersonalDetails()
+{
+  console.log("userIDCookie check")
+  this.userIDCookie = JSON.parse(this.cookieService.get('userID'));
+  console.log("userIDCookie" + this.userIDCookie)
+  this.userID.push(this.userIDCookie[0]);
+  console.log("userIDCookie" + this.userID)
+ 
+    this.userService.getUserById(this.userIDlast[0]).subscribe((returnedUser) =>{
       this.user = returnedUser; 
 
+      console.log("userName" + this.user.name)
       })
   }
+
+ 
   editUserDetails(){
     this.savePersonalDetails = true;
     this.editPersonalDetails = false;

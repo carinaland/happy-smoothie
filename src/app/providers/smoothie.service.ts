@@ -6,19 +6,19 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SmoothieService {
-  private apiUrl = "http://localhost:3100/api/Smoothies";
+  private apiUrl = "https://peaceful-reef-13737.herokuapp.com/api/Smoothies";
   constructor(
     private http: Http
   ) { }
 
 //http://peaceful-reef-13737.herokuapp.com/api/Smoothies
   getData() {
-   return this.http.get("http://localhost:3100/api/Smoothies")
+   return this.http.get("https://peaceful-reef-13737.herokuapp.com/api/Smoothies")
       .map((res: Response) => res.json());
   }
 
   getIngrediants(idSmoothie) {
-    return this.http.get('http://localhost:3100/api/Smoothie/' + idSmoothie + '/Ingrediants')
+    return this.http.get('https://peaceful-reef-13737.herokuapp.com/api/Smoothie/' + idSmoothie + '/Ingrediants')
       .map(res => res.json()).toPromise();
   }
 
@@ -37,7 +37,7 @@ export class SmoothieService {
     var data = JSON.stringify(smoothie);
     console.log(data);
     console.log('getting there!!!!!!');
-    return this.http.post('http://localhost:3100/api/Smoothies/Add', data, { headers: headers })
+    return this.http.post('https://peaceful-reef-13737.herokuapp.com/api/Smoothies/Add', data, { headers: headers })
       .map(res => res.json());
   }
 
@@ -47,7 +47,7 @@ export class SmoothieService {
     headers.append('Content-Type', 'application/json');
     var data = JSON.stringify(smoothie);
     console.log("check smoothie id: " + smoothie.idSmoothie);
-    return this.http.put('http://localhost:3100/api/Smoothies/update/' + smoothie.idSmoothie, data, { headers: headers })
+    return this.http.put('https://peaceful-reef-13737.herokuapp.com/api/Smoothies/update/' + smoothie.idSmoothie, data, { headers: headers })
       .map(res => res.json());
   }
 
@@ -61,7 +61,7 @@ export class SmoothieService {
     var data = JSON.stringify(object);
     console.log('datatattatataa',data);
     console.log('getting there!!!!!!');
-    return this.http.delete('http://localhost:3100/api/Smoothies/delete/' + idSmoothie, { headers: headers })
+    return this.http.delete('https://peaceful-reef-13737.herokuapp.com/api/Smoothies/delete/' + idSmoothie, { headers: headers })
     .map((res:Response) => {console.log(res.toString())
       res.json()});
 

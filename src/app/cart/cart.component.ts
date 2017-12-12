@@ -27,8 +27,6 @@ export class CartComponent implements OnInit {
   constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService, private cookieService: CookieService) { }
 
   ngOnInit() {
-    //this.userID = JSON.parse(this.cookieService.get('userID'));
-
   }
 
   showAddress() {
