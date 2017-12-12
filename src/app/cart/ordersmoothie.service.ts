@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class OrdersmoothieService {
-    private apiUrl = "http://localhost:3100/api/";
+    private apiUrl = "https://peaceful-reef-13737.herokuapp.com/api/";
     constructor(private http: Http) { }
 
     addSmoothieOrder(smoothieorder) {

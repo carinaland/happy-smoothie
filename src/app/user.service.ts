@@ -6,7 +6,7 @@ import 'rxjs';
 
 @Injectable()
 export class UserService {
-  private apiUrl = "http://localhost:3100/api/User";
+  private apiUrl = "https://peaceful-reef-13737.herokuapp.com/api/User";
   constructor(private http: Http) { }
 
   getUserById(id: number): Observable<IUser> {

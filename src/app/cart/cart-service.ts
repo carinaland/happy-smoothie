@@ -7,7 +7,7 @@ import { ICart } from 'app/cart/cart';
 @Injectable()
 export class CartService {
 
-private apiUrl = "http://localhost:3100/api/Cart";
+private apiUrl = "https://peaceful-reef-13737.herokuapp.com/api/Cart";
 constructor(private http : Http) { }
 
 /*getCart(id : number) : Observable<ICart> {

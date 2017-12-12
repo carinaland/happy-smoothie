@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-var api = 'http://localhost:3100/api/';
+var api = 'https://peaceful-reef-13737.herokuapp.com/api/';
 
 import {Http, Headers, RequestOptions} from '@angular/http'
 
