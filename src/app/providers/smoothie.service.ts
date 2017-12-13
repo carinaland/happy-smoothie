@@ -56,10 +56,8 @@ export class SmoothieService {
     console.log('Check delete smoothie service!!!!!!');
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-
-    var object = { 'idSmoothie': idSmoothie }
-    var data = JSON.stringify(object);
-    console.log('datatattatataa',data);
+  
+    console.log('idSmoothie:', idSmoothie );
     console.log('getting there!!!!!!');
     return this.http.delete('http://localhost:3100/api/Smoothies/delete/' + idSmoothie, { headers: headers })
     .map((res:Response) => {console.log(res.toString())
