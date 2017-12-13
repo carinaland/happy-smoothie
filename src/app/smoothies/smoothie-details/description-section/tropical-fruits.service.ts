@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-var api = 'http://tropicalfruitandveg.com/api/tfvjsonapi.php?tfvitem=';
+var api = 'https://tropicalfruitandveg.com/api/tfvjsonapi.php?tfvitem=';
 import {Http, Jsonp} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -18,7 +18,7 @@ export class TropicalFruitsService {
      * @returns {OperatorFunction<T, R>}
      */
   getDetails(ingrediant):Observable<any[]> {
-    let apiUrl = 'http://api.tropicalfruitandveg.com/tfvjsonapi.php?tfvitem=';
+    let apiUrl = 'https://api.tropicalfruitandveg.com/tfvjsonapi.php?tfvitem=';
       let pine = this.http.get(apiUrl + ingrediant)
           .map(res => {
               this.health = res.json().results[0].health;
