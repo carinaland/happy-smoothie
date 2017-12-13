@@ -12,10 +12,11 @@
     <div class="col-sm-12">
       <div class="text-right" id="checkContinueBtn">
         <button class="btn btn-info" routerLink="/">Continue Shopping</button>
-        <button class="btn btn-success" (click)="showAddress()" *ngIf="!showAdd">Checkout</button>
+        <button class="btn btn-success" id="testBTN" (click)="showAddress()" *ngIf="!showAdd">Checkout</button>
       </div>
     </div>
   </div>
+  <br>
   <div *ngIf="showAdd" class='panel panel-primary'>
     <div class="panel-body">
       <div class="row">
@@ -32,7 +33,7 @@
           <app-payment-details></app-payment-details>
         </div>
       </div>
-      <button type="subbmit" class="btn btn-success btn-sm" (click)="addTotalOrder()">Pay</button>
+      <button type="subbmit" class="btn btn-success btn-sm" id="payBtn" (click)="addTotalOrder()">Pay</button>
     </div>
   </div>
 </div>
