@@ -1,7 +1,7 @@
 <b>COMMENTS:</b>
 <div *ngFor='let comment of commentList'>
   <app-comment [idComment]="comment.idComments"
-               [idUser]="comment.email"
+               [idUser]="comment.name"
                [date]="comment.date"
                [content]="comment.content"
                [rating]="comment.rating"
