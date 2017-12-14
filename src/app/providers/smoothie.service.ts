@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http'
-import { ISmoothie } from '../smoothielist';
+import { ISmoothie } from 'app/Interfaces/smoothielist';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
