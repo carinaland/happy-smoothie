@@ -20,8 +20,7 @@ export class PersonalDetailsComponent implements OnInit {
   editPersonalDetails: boolean = true;
   savePersonalDetails: boolean = false;
   myform:boolean = false;
- public userIDCookie = [];
- userID = [];
+ public userIDCookie;
  userIDlast: any;
   constructor(private userService : UserService, private cookieService: CookieService) { }
 
@@ -32,12 +31,10 @@ export class PersonalDetailsComponent implements OnInit {
   loadPersonalDetails()
 {
   console.log("userIDCookie check")
-  this.userIDCookie = JSON.parse(this.cookieService.get('userID'));
-  console.log("userIDCookie" + this.userIDCookie)
-  this.userID.push(this.userIDCookie[0]);
-  console.log("userIDCookie" + this.userID)
+  this.userIDCookie = this.cookieService.get('userID');
+  console.log(this.userIDCookie);
  
-    this.userService.getUserById(this.userIDlast[0]).subscribe((returnedUser) =>{
+    this.userService.getUserById(this.userIDCookie).subscribe((returnedUser) =>{
       this.user = returnedUser; 
 
       console.log("userName" + this.user.name)
@@ -51,9 +48,10 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   updateUser(name, street, city, county, eircode, email,) {
-    
-    var user = { 
-      iduser: "5",
+
+    this.userIDCookie = this.cookieService.get('userID');
+    var user = {
+      iduser: this.userIDCookie,
       name: name.value,
       street: street.value,
       city: city.value,

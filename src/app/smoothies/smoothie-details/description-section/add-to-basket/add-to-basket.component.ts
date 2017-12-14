@@ -19,12 +19,19 @@ export class AddToBasketComponent{
    * add smoothie to cookie for read it in basket
    */
   addToBasket():void{
-    if (this.cookieService.check('selectedSmoothies')) {
-      this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
+
+    if (this.cookieService.check('userID')) {
+      if (this.cookieService.check('selectedSmoothies')) {
+        this.selectedSmoothies = JSON.parse(this.cookieService.get('selectedSmoothies'));
+      }
+
+      this.selectedSmoothies.push({"id": this.smoothie.idSmoothie, "quantity": "1"});
+      this.cookieService.set( 'selectedSmoothies', JSON.stringify(this.selectedSmoothies) );
+      alert('Your smoothie was successfully added to the basket. Continue shopping or go to "Shop" for finishing your order.')
+    } else {
+      alert('you are not logged in. Please login before ordering.');
     }
-   
-    this.selectedSmoothies.push({"id": this.smoothie.idSmoothie, "quantity": "1"});
-    this.cookieService.set( 'selectedSmoothies', JSON.stringify(this.selectedSmoothies) );
+
    
   }
 

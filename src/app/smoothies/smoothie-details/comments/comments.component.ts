@@ -13,7 +13,7 @@ export class CommentsComponent implements OnInit {
   @Input() passedId:number;
   commentList: Icomment[];
   comment:string;
-  url:string = 'http://localhost:3100';
+  url:string = 'https://peaceful-reef-13737.herokuapp.com';
   private socket;
 
 
