@@ -7,6 +7,9 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
+// developer: Rubab
+
 export class AdminComponent implements OnInit {
   public isLoggedIn: Boolean;
   private user_displayName: String;

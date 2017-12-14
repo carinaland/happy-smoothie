@@ -11,8 +11,8 @@ import { SmoothieListComponent } from './smoothies/smoothie-list/smoothie-list.c
 import { SmoothieDetailsComponent } from './smoothies/smoothie-details/smoothie-details.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { ContactComponent } from './contact/contact.component';
- import { ContactDetailsComponent } from './contact/contact-details/contact-details.component';
- import { MapComponent } from './contact/map/map.component';
+import { ContactDetailsComponent } from './contact/contact-details/contact-details.component';
+import { MapComponent } from './contact/map/map.component';
 
 
 import { AgmCoreModule } from '@agm/core';

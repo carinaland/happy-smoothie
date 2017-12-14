@@ -5,7 +5,6 @@ import { OrderService } from 'app/order.service';
 import { OrdersmoothieService } from './ordersmoothie.service';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
