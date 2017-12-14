@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { ISelectedSmoothie } from 'app/cart/cart-details/selectedSmoothie';
+import { ISelectedSmoothie } from 'app/interfaces/selectedSmoothie';
 import { ISmoothie } from 'app/Interfaces/smoothielist';
 
 @Component({

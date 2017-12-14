@@ -72,7 +72,7 @@
                     <textarea #description value="{{sInfo.description}}"  rows="5" id="comment"></textarea>
                   </div>
                 </div>
-                <div class="ui buttons ">
+                <div id="editbuttons" class="ui buttons right floated ">
                   <button (click)="updateSmoothie(idSmoothie, name, price , description, imageUrl )" type="button" class="btn btn-sm btn-info">
                 <span class="glyphicon glyphicon-ok-sign"></span> Save
               </button>

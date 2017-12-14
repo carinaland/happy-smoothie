@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DetailsService } from "../../details.service";
+import { DetailsService } from "app/providers/details.service";
 import { ISmoothie } from "../smoothie-list/smoothies";
 import {Router, ActivatedRoute, Params} from '@angular/router';
 

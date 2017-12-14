@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SmoothieService } from 'app/providers/smoothie.service';
 import { ISmoothie } from 'app/Interfaces/smoothielist';
-import { DetailsService } from "../../details.service";
+import { DetailsService } from "app/providers/details.service";
 import { Iingrediant } from "../../Interfaces/Iingrediant";
 
 @Component({

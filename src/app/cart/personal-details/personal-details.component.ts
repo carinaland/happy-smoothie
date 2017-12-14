@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'app/user';
-import { UserService } from 'app/user.service';
+import { IUser } from 'app/Interfaces/user';
+import { UserService } from 'app/providers/user.service';
 import { Observable } from 'rxjs/Observable';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -13,9 +13,7 @@ export class PersonalDetailsComponent implements OnInit {
   http: any;
 
   user: IUser;
-  /*address: string;
-  city: string;
-  name: string;*/
+ 
   showAdd:boolean = false;
   editPersonalDetails: boolean = true;
   savePersonalDetails: boolean = false;
