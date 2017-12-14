@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './providers/auth.service';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { CookieService } from 'ngx-cookie-service';
 
 import { Observable } from 'rxjs/Rx';
 import * as firebase from 'firebase';
@@ -18,7 +19,7 @@ public isLoggedIn: Boolean;
   private user_displayName: String;
   private user_email: String;
 
-  constructor(public authService: AuthUserService,private router: Router, public afAuth: AngularFireAuth) {
+  constructor(public authService: AuthUserService,private router: Router, public afAuth: AngularFireAuth, private cookieService: CookieService) {
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (user != null) {
         this.isLoggedIn = true;
@@ -36,6 +37,7 @@ public isLoggedIn: Boolean;
   }
 
   logout() {
+    this.cookieService.delete('userID');
     this.authService.logout();
     this.user_displayName = '';
     this.user_email ='';

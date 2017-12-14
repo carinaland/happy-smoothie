@@ -19,13 +19,11 @@ export class TropicalFruitsService {
      */
   getDetails(ingrediant):Observable<any[]> {
     let apiUrl = 'https://api.tropicalfruitandveg.com/tfvjsonapi.php?tfvitem=';
-      let pine = this.http.get(apiUrl + ingrediant)
+      return this.http.get(apiUrl + ingrediant)
           .map(res => {
               this.health = res.json().results[0].health;
               return res.json().results.map(i => {});
           });
-      console.log(typeof pine);
-      return pine;
   }
 
 

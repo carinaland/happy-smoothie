@@ -28,6 +28,12 @@ footer{
     text-align: center;
     margin-top: 70px;
 }
+
+.loginname{
+    display: inline-block;
+    clear:both;
+}
+
 @media only screen and (max-width: 1056px) {
     .width-adjust{
         padding-left: 3%;

@@ -17,6 +17,8 @@ export class AddToBasketComponent{
 
   /**
    * add smoothie to cookie for read it in basket
+   *
+   * return: void
    */
   addToBasket():void{
 

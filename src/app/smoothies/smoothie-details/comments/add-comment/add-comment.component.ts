@@ -26,6 +26,9 @@ export class AddCommentComponent implements OnInit {
     this.idUser = this.cookieService.get('userID');
   }
 
+  /**
+   * add a comment to the current shown smoothie and send an emit event to the server for real-time-communication
+   */
   addComment() : void {
 
     if (this.cookieService.check('userID')) {
@@ -41,6 +44,7 @@ export class AddCommentComponent implements OnInit {
         var res = res;
       });
 
+      // emit the add-comment-event to the server
       setTimeout(function () {
         this.socket.emit('add-comment', comment);
       }, 1);
