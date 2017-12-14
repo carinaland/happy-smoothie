@@ -27,17 +27,17 @@ import { SmoothieItemsComponent } from './admin/smoothie-items/smoothie-items.co
 
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from "@angular/router";
-import { OrderService } from 'app/order.service';
-import { OrdersmoothieService } from 'app/cart/ordersmoothie.service';
+import { OrderService } from 'app/providers/order.service';
+import { OrdersmoothieService } from 'app/providers/ordersmoothie.service';
 
 import { DescriptionSectionComponent } from './smoothies/smoothie-details/description-section/description-section.component';
 import { AddToBasketComponent } from './smoothies/smoothie-details/description-section/add-to-basket/add-to-basket.component';
 import { CookieService } from 'ngx-cookie-service';
 
-import { UserService } from 'app/user.service';
-import { DetailsService } from 'app/details.service';
+import { UserService } from 'app/providers/user.service';
+import { DetailsService } from 'app/providers/details.service';
 import { CommentService } from 'app/smoothies/smoothie-details/comments/comment.service';
-import { CartService } from 'app/cart/cart-service';
+import { CartService } from 'app/providers/cart-service';
 import { TropicalFruitsService} from 'app/smoothies/smoothie-details/description-section/tropical-fruits.service';
 import { SmoothieService } from './providers/smoothie.service';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http'
-import { ISmoothie } from '../smoothielist';
+import { ISmoothie } from 'app/Interfaces/smoothielist';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -56,10 +56,8 @@ export class SmoothieService {
     console.log('Check delete smoothie service!!!!!!');
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-
-    var object = { 'idSmoothie': idSmoothie }
-    var data = JSON.stringify(object);
-    console.log('datatattatataa',data);
+  
+    console.log('idSmoothie:', idSmoothie );
     console.log('getting there!!!!!!');
     return this.http.delete('https://peaceful-reef-13737.herokuapp.com/api/Smoothies/delete/' + idSmoothie, { headers: headers })
     .map((res:Response) => {console.log(res.toString())

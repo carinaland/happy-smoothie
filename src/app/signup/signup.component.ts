@@ -4,7 +4,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuth } from 'angularfire2/auth';
 import { NotificationService } from '../providers/notification.service';
 import { AuthUserService } from '../providers/auth-user.service';
-import { UserService } from 'app/user.service';
+import { UserService } from 'app/providers/user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

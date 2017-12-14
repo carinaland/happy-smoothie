@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthUserService } from '../providers/auth-user.service';
 import { NotificationService } from '../providers/notification.service';
-import { UserService } from 'app/user.service';
+import { UserService } from 'app/providers/user.service';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-signin',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ISmoothie } from 'app/smoothies/smoothie-list/smoothies';
 import { Http, RequestMethod, Headers } from "@angular/http";
-import { OrderService } from 'app/order.service';
-import { OrdersmoothieService } from './ordersmoothie.service';
+import { OrderService } from 'app/providers/order.service';
+import { OrdersmoothieService } from 'app/providers/ordersmoothie.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
   objSmoothie: any;
   objSmoothieArray = [];
   public userID = [];
+  public userIDCookie;
 
   constructor(private orderService: OrderService, private ordersmoothieService: OrdersmoothieService, private cookieService: CookieService) { }
 
@@ -35,10 +36,11 @@ export class CartComponent implements OnInit {
   
 
   addOrder() {
+    this.userIDCookie = this.cookieService.get('userID');
     //insert order into order table
     console.log("ok");
     var order = {
-      "idUser": 2222,
+      "idUser": this.userIDCookie,
       "date": new Date()
     }
     console.log("addOrder" + order);

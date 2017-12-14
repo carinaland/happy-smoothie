@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SmoothieService } from 'app/providers/smoothie.service';
-import { ISmoothie } from 'app/smoothielist';
-import { DetailsService } from "../../details.service";
+import { ISmoothie } from 'app/Interfaces/smoothielist';
+import { DetailsService } from "app/providers/details.service";
 import { Iingrediant } from "../../Interfaces/Iingrediant";
 
 @Component({
@@ -11,9 +11,9 @@ import { Iingrediant } from "../../Interfaces/Iingrediant";
 })
 
 export class SmoothieItemsComponent implements OnInit {
-  imageWidth: number = 40;
-  imageHeight: number = 40;
-  imageMargin: number = 12;
+  imageWidth: number = 60;
+  imageHeight: number = 60;
+  imageMargin: number = 10;
 
   edit = false;
   showAdd: boolean = false;

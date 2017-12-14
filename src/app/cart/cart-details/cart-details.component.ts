@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ICart } from 'app/cart/cart';
-import { CartService } from 'app/cart/cart-service';
+import { ICart } from 'app/Interfaces/cart';
+import { CartService } from 'app/providers/cart-service';
 import { CookieService } from 'ngx-cookie-service';
-import { ISelectedSmoothie } from 'app/cart/cart-details/selectedSmoothie';
+import { ISelectedSmoothie } from 'app/Interfaces/selectedSmoothie';
 
 
 @Component({

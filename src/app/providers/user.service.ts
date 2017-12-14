@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestMethod, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { IUser } from 'app/user';
+import { IUser } from 'app/Interfaces/user';
 import 'rxjs';
 
 @Injectable()
